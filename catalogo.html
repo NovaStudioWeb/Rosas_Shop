@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | Rosa's Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables globales y Navbar/Footer (Igual que index) */
+        :root { --rosa-accent: #e83e8c; --dark-bg: #1a1a1a; --light-bg: #f8f9fa; --text-main: #333; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text-main); }
+        h1, h2, h3, h4, .navbar-brand { font-family: 'Playfair Display', serif; }
+        .navbar { padding: 1rem 0; background-color: rgba(255, 255, 255, 0.95) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar-brand { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; color: black !important;}
+        .nav-link { font-weight: 500; color: #333 !important; margin: 0 10px; transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: var(--rosa-accent) !important; }
+        .cart-icon:hover { color: var(--rosa-accent); cursor: pointer; }
+        
+        /* Estilos específicos de Catálogo */
+        .page-header { background-color: var(--light-bg); padding: 6rem 0 3rem; text-align: center; }
+        .filter-sidebar h5 { border-bottom: 2px solid var(--rosa-accent); padding-bottom: 10px; margin-bottom: 20px; }
+        .form-check-label { font-weight: 300; }
+        .product-card { border: none; transition: transform 0.3s ease, box-shadow 0.3s ease; margin-bottom: 2rem; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card-img-top { height: 300px; object-fit: cover; }
+        .product-meta { text-align: center; padding: 1.5rem; }
+        .product-price { font-weight: 700; margin: 0.5rem 0; }
+        .btn-add { background-color: transparent; color: #333; border: 1px solid #333; width: 100%; padding: 8px; transition: all 0.3s; }
+        .btn-add:hover { background-color: var(--rosa-accent); border-color: var(--rosa-accent); color: white; }
+        
+        /* Footer */
+        footer { background-color: var(--dark-bg); color: #bbb; padding-top: 4rem; margin-top: 4rem; }
+        footer h5 { color: white; } footer a { color: #bbb; text-decoration: none; }
+        footer a:hover { color: var(--rosa-accent); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Rosa's <span style="font-weight: 300; font-style: italic;">Shop</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="catalogo.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="cart-icon"><i class="fas fa-shopping-bag fa-lg"></i></div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Nuestro Catálogo</h1>
+            <p class="text-muted">Descubre tu nueva adquisición.</p>
+        </div>
+    </header>
+
+    <section class="container my-5">
+        <div class="row">
+            <aside class="col-lg-3 mb-4 filter-sidebar">
+                <h5>Categorías</h5>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="cat1">
+                    <label class="form-check-label" for="cat1">Perfumes</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="cat2" checked>
+                    <label class="form-check-label" for="cat2">Jeans</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="cat3">
+                    <label class="form-check-label" for="cat3">T-Shirts</label>
+                </div>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="cat4">
+                    <label class="form-check-label" for="cat4">Zapatos</label>
+                </div>
+
+                <h5>Precio</h5>
+                <input type="range" class="form-range mb-3" min="0" max="5000" id="priceRange">
+                <div class="d-flex justify-content-between text-muted small">
+                    <span>RD$ 0</span>
+                    <span>RD$ 5000+</span>
+                </div>
+            </aside>
+
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card product-card">
+                            <img src="https://images.unsplash.com/photo-1542272617-08f086302542?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Jeans">
+                            <div class="card-body product-meta">
+                                <h5 class="card-title h6">Skinny Jeans High Waist</h5>
+                                <p class="product-price">RD$ 1,800</p>
+                                <button class="btn btn-add rounded-0">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card product-card">
+                            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="T-shirt">
+                            <div class="card-body product-meta">
+                                <h5 class="card-title h6">T-Shirt Básica Premium</h5>
+                                <p class="product-price">RD$ 850</p>
+                                <button class="btn btn-add rounded-0">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-4 col-sm-6">
+                        <div class="card product-card">
+                            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Zapatos">
+                            <div class="card-body product-meta">
+                                <h5 class="card-title h6">Tenis Clásicos Blancos</h5>
+                                <p class="product-price">RD$ 2,200</p>
+                                <button class="btn btn-add rounded-0">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-12 mb-4">
+                    <p class="mb-0 text-center">&copy; 2026 Rosa's Shop. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

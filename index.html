@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosa's Shop | Tu Nueva Adquisición</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES & GLOBAL --- */
+        :root {
+            --rosa-accent: #e83e8c; /* Color de acento solicitado */
+            --dark-bg: #1a1a1a;
+            --light-bg: #f8f9fa;
+            --text-main: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            padding: 1rem 0;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #333 !important;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--rosa-accent) !important;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .cart-icon:hover {
+            color: var(--rosa-accent);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto Parallax elegante */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        /* Botón personalizado */
+        .btn-custom {
+            background-color: white;
+            color: black;
+            padding: 12px 35px;
+            border-radius: 0; /* Bordes rectos para elegancia */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid white;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--rosa-accent);
+            border-color: var(--rosa-accent);
+            color: white;
+        }
+
+        /* --- INFO ICONS --- */
+        .info-box {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .icon-wrapper {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+            transition: color 0.3s;
+        }
+
+        .feature-box:hover .icon-wrapper {
+            color: var(--rosa-accent);
+        }
+
+        /* --- CATEGORIES --- */
+        .categories-section {
+            padding: 5rem 0;
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: var(--rosa-accent);
+            margin: 15px auto 0;
+        }
+
+        .cat-item {
+            text-align: center;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+
+        .cat-img-wrapper {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .cat-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cat-item:hover .cat-img-wrapper {
+            border-color: var(--rosa-accent);
+        }
+
+        .cat-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .cat-title {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- PRODUCTS --- */
+        .products-section {
+            padding: 5rem 0;
+        }
+
+        .product-card {
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-img-top {
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .product-meta {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0.5rem 0;
+        }
+
+        .btn-add {
+            background-color: transparent;
+            color: #333;
+            border: 1px solid #333;
+            width: 100%;
+            padding: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-add:hover {
+            background-color: var(--rosa-accent);
+            border-color: var(--rosa-accent);
+            color: white;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-bg);
+            color: #bbb;
+            padding-top: 4rem;
+        }
+
+        footer h5 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        footer a {
+            color: #bbb;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--rosa-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .cat-img-wrapper { width: 120px; height: 120px; }
+            .card-img-top { height: 250px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                Rosa's <span style="font-weight: 300; font-style: italic;">Shop</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="cart-icon me-3">
+                    <i class="fas fa-shopping-bag fa-lg"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container hero-content">
+            <h1>Tu Nueva Adquisición</h1>
+            <p>Solo lo mejor para ti | Venta de Ropa Extranjera Online</p>
+            <a href="#catalogo" class="btn btn-custom">Ver Colección</a>
+        </div>
+    </header>
+
+    <section class="info-box container">
+        <div class="row text-center g-4">
+            <div class="col-md-4 feature-box">
+                <div class="icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
+                <h5>Santo Domingo Oeste</h5>
+                <p class="text-muted small">Ubicación principal</p>
+            </div>
+            <div class="col-md-4 feature-box">
+                <div class="icon-wrapper"><i class="fas fa-shipping-fast"></i></div>
+                <h5>Delivery Disponible</h5>
+                <p class="text-muted small">Envío a domicilio (Costo adicional)</p>
+            </div>
+            <div class="col-md-4 feature-box">
+                <div class="icon-wrapper"><i class="fab fa-whatsapp"></i></div>
+                <h5>Pedidos Rápidos</h5>
+                <p class="text-muted small"><a href="tel:8496214533" style="text-decoration: none; color: inherit;">(849) 621-4533</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Nuestras Categorías</h2>
+            <div class="row justify-content-center">
+                
+                <div class="col-6 col-md-3 cat-item">
+                    <div class="cat-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1594035910387-fea477942698?q=80&w=600&auto=format&fit=crop" alt="Perfumes">
+                    </div>
+                    <h4 class="cat-title">Perfumes</h4>
+                </div>
+
+                <div class="col-6 col-md-3 cat-item">
+                    <div class="cat-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop" alt="Jeans">
+                    </div>
+                    <h4 class="cat-title">Jeans</h4>
+                </div>
+
+                <div class="col-6 col-md-3 cat-item">
+                    <div class="cat-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop" alt="T-Shirts">
+                    </div>
+                    <h4 class="cat-title">T-Shirts</h4>
+                </div>
+
+                <div class="col-6 col-md-3 cat-item">
+                    <div class="cat-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop" alt="Zapatos">
+                    </div>
+                    <h4 class="cat-title">Zapatos</h4>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogo" class="products-section container">
+        <h2 class="section-title">Nuevas Adquisiciones</h2>
+        <div class="row">
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Blusa">
+                    <div class="card-body product-meta">
+                        <h5 class="card-title h6">Blusa Importada Seda</h5>
+                        <p class="product-price">RD$ 1,200</p>
+                        <button class="btn btn-add rounded-0" onclick="addToCart('Blusa Importada Seda')">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1542272617-08f086302542?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Jeans">
+                    <div class="card-body product-meta">
+                        <h5 class="card-title h6">Skinny Jeans High Waist</h5>
+                        <p class="product-price">RD$ 1,800</p>
+                        <button class="btn btn-add rounded-0" onclick="addToCart('Skinny Jeans High Waist')">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Tenis">
+                    <div class="card-body product-meta">
+                        <h5 class="card-title h6">Tenis Urban Chic</h5>
+                        <p class="product-price">RD$ 2,500</p>
+                        <button class="btn btn-add rounded-0" onclick="addToCart('Tenis Urban Chic')">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Perfume">
+                    <div class="card-body product-meta">
+                        <h5 class="card-title h6">Perfume 'Essence'</h5>
+                        <p class="product-price">RD$ 3,200</p>
+                        <button class="btn btn-add rounded-0" onclick="addToCart('Perfume Essence')">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Rosa's Shop</h5>
+                    <p class="text-muted">Solo lo mejor para ti. Tu tienda de confianza para ropa extranjera de alta calidad y estilo único.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#catalogo">Catálogo</a></li>
+                        <li><a href="#">Política de Envíos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Santo Domingo Oeste, RD</p>
+                    <p><i class="fas fa-phone me-2"></i> (849) 621-4533</p>
+                    <p><i class="fas fa-envelope me-2"></i> contacto@rosasshop.do</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2024 Rosa's Shop. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function addToCart(productName) {
+            // Simulación simple de añadir al carrito
+            alert(`¡Has añadido "${productName}" a tu carrito!`);
+            
+            // Actualizar badge del carrito (visual)
+            const badge = document.querySelector('.badge');
+            let count = parseInt(badge.innerText);
+            badge.innerText = count + 1;
+        }
+
+        // Navbar Change on Scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
