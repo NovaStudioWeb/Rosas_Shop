@@ -382,3 +382,88 @@ footer a:hover {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* --- FOOTER PREMIUM STYLES --- */
+
+/* Color de acento para detalles sutiles */
+.text-pink {
+    color: #e83e8c; /* Rosa de tu marca */
+}
+
+/* Enlaces con efecto deslizante */
+.footer-link {
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #fff !important;
+    transform: translateX(5px); /* Se mueve un poquito a la derecha */
+}
+
+/* Botones sociales circulares y modernos */
+.social-btn-premium {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.05); /* Transparente sutil */
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote */
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.social-btn-premium:hover {
+    background-color: #e83e8c;
+    border-color: #e83e8c;
+    color: #fff;
+    transform: translateY(-5px) scale(1.1); /* Sube y crece un poco */
+    box-shadow: 0 10px 20px rgba(232, 62, 140, 0.3);
+}
+
+/* Estilo para la firma de Nova Studio Web */
+.nova-badge {
+    background: rgba(255,255,255,0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nova-badge:hover {
+    background: #5505d6;
+}
+
+.nova-badge:hover span, 
+.nova-badge:hover i {
+    color: #000; /* Texto se vuelve negro al pasar el mouse */
+}
+
+/* Animación del corazón */
+.animate-pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* --- Estilos adicionales para el logo personal --- */
+
+/* Aseguramos que el logo tenga una transición suave */
+.nova-logo-icon {
+    transition: all 0.3s ease;
+}
+
+/* IMPORTANTE: Si tu logo es BLANCO, esta regla hará 
+   que se vuelva NEGRO al pasar el mouse, para que contraste 
+   con el fondo blanco de la insignia al hacer hover.
+*/
+.nova-badge:hover .nova-logo-icon {
+    filter: invert(1) brightness(0);
+}
