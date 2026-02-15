@@ -3,477 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosa's Shop | Tu Nueva Adquisición</title>
-    
+    <title>Rosa's Shop | Inicio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <style>
-        /* --- VARIABLES & GLOBAL --- */
-        :root {
-            --rosa-accent: #e83e8c; /* Color de acento solicitado */
-            --dark-bg: #1a1a1a;
-            --light-bg: #f8f9fa;
-            --text-main: #333;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, .navbar-brand {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* --- NAVBAR --- */
-        .navbar {
-            padding: 1rem 0;
-            background-color: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .navbar-brand {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: #333 !important;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--rosa-accent) !important;
-        }
-
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .cart-icon:hover {
-            color: var(--rosa-accent);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Efecto Parallax elegante */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-        }
-
-        /* Botón personalizado */
-        .btn-custom {
-            background-color: white;
-            color: black;
-            padding: 12px 35px;
-            border-radius: 0; /* Bordes rectos para elegancia */
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid white;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .btn-custom:hover {
-            background-color: var(--rosa-accent);
-            border-color: var(--rosa-accent);
-            color: white;
-        }
-
-        /* --- INFO ICONS --- */
-        .info-box {
-            padding: 4rem 0;
-            background-color: white;
-        }
-        
-        .icon-wrapper {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 1rem;
-            transition: color 0.3s;
-        }
-
-        .feature-box:hover .icon-wrapper {
-            color: var(--rosa-accent);
-        }
-
-        /* --- CATEGORIES --- */
-        .categories-section {
-            padding: 5rem 0;
-            background-color: var(--light-bg);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 2px;
-            background-color: var(--rosa-accent);
-            margin: 15px auto 0;
-        }
-
-        .cat-item {
-            text-align: center;
-            margin-bottom: 2rem;
-            cursor: pointer;
-        }
-
-        .cat-img-wrapper {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 1rem;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .cat-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .cat-item:hover .cat-img-wrapper {
-            border-color: var(--rosa-accent);
-        }
-
-        .cat-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .cat-title {
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* --- PRODUCTS --- */
-        .products-section {
-            padding: 5rem 0;
-        }
-
-        .product-card {
-            border: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 2rem;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .card-img-top {
-            height: 350px;
-            object-fit: cover;
-        }
-
-        .product-meta {
-            text-align: center;
-            padding: 1.5rem;
-        }
-
-        .product-price {
-            font-weight: 700;
-            color: var(--text-main);
-            margin: 0.5rem 0;
-        }
-
-        .btn-add {
-            background-color: transparent;
-            color: #333;
-            border: 1px solid #333;
-            width: 100%;
-            padding: 8px;
-            transition: all 0.3s;
-        }
-
-        .btn-add:hover {
-            background-color: var(--rosa-accent);
-            border-color: var(--rosa-accent);
-            color: white;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--dark-bg);
-            color: #bbb;
-            padding-top: 4rem;
-        }
-
-        footer h5 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        footer a {
-            color: #bbb;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.2s;
-        }
-
-        footer a:hover {
-            color: var(--rosa-accent);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding: 1.5rem 0;
-            margin-top: 3rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Fixes */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .cat-img-wrapper { width: 120px; height: 120px; }
-            .card-img-top { height: 250px; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm transition-navbar" style="background-color: rgba(255,255,255,0.95); backdrop-filter: blur(5px);">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                Rosa's <span style="font-weight: 300; font-style: italic;">Shop</span>
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/img/logo-shop-removebg.png" alt="Logo Rosa's Shop" class="navbar-logo me-2 transition-logo">
+                <span class="d-none d-sm-inline">Rosa's <span class="fw-light">Shop</span></span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link active fw-semibold hover-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="catalogo.html">Catálogo</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="contacto.html">Contacto</a></li>
                 </ul>
             </div>
-            <div class="d-flex align-items-center">
-                <div class="cart-icon me-3">
-                    <i class="fas fa-shopping-bag fa-lg"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
-                </div>
+            <div class="cart-icon position-relative transition-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" style="cursor: pointer;">
+                <i class="fas fa-shopping-bag fa-lg"></i>
+                <span id="badge-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow-sm transition-badge" style="font-size: 0.65rem;">0</span>
             </div>
         </div>
     </nav>
 
-    <header class="hero-section">
-        <div class="container hero-content">
-            <h1>Tu Nueva Adquisición</h1>
-            <p>Solo lo mejor para ti | Venta de Ropa Extranjera Online</p>
-            <a href="#catalogo" class="btn btn-custom">Ver Colección</a>
+    <header class="hero-section text-white text-center d-flex align-items-center justify-content-center position-relative" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; height: 100vh; margin-top: -76px;">
+        <div class="container position-relative z-1">
+            <h1 class="display-1 fw-bold mb-3 animate-fade-in-up" style="font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Tu Nueva Adquisición</h1>
+            <p class="lead mb-5 text-uppercase tracking-widest animate-fade-in-up delay-1" style="letter-spacing: 3px;">Solo lo mejor para ti | Ropa Extranjera</p>
+            <a href="catalogo.html" class="btn btn-custom px-5 py-3 rounded-0 animate-fade-in-up delay-2 fw-bold text-uppercase border-2">Ver Colección</a>
+        </div>
+        <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 animate-bounce">
+            <i class="fas fa-chevron-down fa-2x text-white opacity-75"></i>
         </div>
     </header>
 
-    <section class="info-box container">
-        <div class="row text-center g-4">
-            <div class="col-md-4 feature-box">
-                <div class="icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
-                <h5>Santo Domingo Oeste</h5>
-                <p class="text-muted small">Ubicación principal</p>
-            </div>
-            <div class="col-md-4 feature-box">
-                <div class="icon-wrapper"><i class="fas fa-shipping-fast"></i></div>
-                <h5>Delivery Disponible</h5>
-                <p class="text-muted small">Envío a domicilio (Costo adicional)</p>
-            </div>
-            <div class="col-md-4 feature-box">
-                <div class="icon-wrapper"><i class="fab fa-whatsapp"></i></div>
-                <h5>Pedidos Rápidos</h5>
-                <p class="text-muted small"><a href="tel:8496214533" style="text-decoration: none; color: inherit;">(849) 621-4533</a></p>
-            </div>
-        </div>
-    </section>
-
-    <section class="categories-section">
+<section class="bg-light py-5 position-relative z-2 animate-on-scroll" style="margin-top: -60px; background-color: transparent !important;">
         <div class="container">
-            <h2 class="section-title">Nuestras Categorías</h2>
-            <div class="row justify-content-center">
-                
-                <div class="col-6 col-md-3 cat-item">
-                    <div class="cat-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1594035910387-fea477942698?q=80&w=600&auto=format&fit=crop" alt="Perfumes">
-                    </div>
-                    <h4 class="cat-title">Perfumes</h4>
-                </div>
+            <div class="row text-center justify-content-center px-3 px-md-0">
+                <div class="col-12 bg-white shadow-lg rounded-3 d-flex flex-wrap flex-md-nowrap overflow-hidden border">
+                    
+                    <a href="https://www.google.com/maps/search/?api=1&query=Santo+Domingo+Oeste" target="_blank" class="col-md-4 text-decoration-none text-dark info-card-link border-bottom border-bottom-md-0 border-end-md">
+                        <div class="p-4 p-md-5 h-100 info-card transition-all"> 
+                            <i class="fas fa-map-marker-alt fa-3x mb-3 text-secondary icon-float"></i>
+                            <h5 style="font-family: 'Playfair Display', serif;" class="fw-bold">Santo Domingo Oeste</h5>
+                            <p class="text-muted small mb-0">Ver ubicación en mapa</p>
+                        </div>
+                    </a>
 
-                <div class="col-6 col-md-3 cat-item">
-                    <div class="cat-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop" alt="Jeans">
-                    </div>
-                    <h4 class="cat-title">Jeans</h4>
-                </div>
+                    <a href="catalogo.html" class="col-md-4 text-decoration-none text-dark info-card-link border-bottom border-bottom-md-0 border-end-md">
+                        <div class="p-4 p-md-5 h-100 info-card transition-all">
+                            <i class="fas fa-truck fa-3x mb-3 text-secondary icon-float"></i>
+                            <h5 style="font-family: 'Playfair Display', serif;" class="fw-bold">Delivery Disponible</h5>
+                            <p class="text-muted small mb-0">Ir al catálogo y pedir</p>
+                        </div>
+                    </a>
 
-                <div class="col-6 col-md-3 cat-item">
-                    <div class="cat-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop" alt="T-Shirts">
-                    </div>
-                    <h4 class="cat-title">T-Shirts</h4>
-                </div>
+                    <a href="https://wa.me/18496214533?text=Hola,%20me%20interesa%20ver%20la%20ropa%20disponible!" target="_blank" class="col-md-4 text-decoration-none text-dark info-card-link">
+                        <div class="p-4 p-md-5 h-100 info-card transition-all">
+                            <i class="fab fa-whatsapp fa-3x mb-3 text-secondary icon-float"></i>
+                            <h5 style="font-family: 'Playfair Display', serif;" class="fw-bold">Pedidos Rápidos</h5>
+                            <p class="text-muted small mb-0">Chatea con nosotros</p>
+                        </div>
+                    </a>
 
-                <div class="col-6 col-md-3 cat-item">
-                    <div class="cat-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop" alt="Zapatos">
-                    </div>
-                    <h4 class="cat-title">Zapatos</h4>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section id="catalogo" class="products-section container">
-        <h2 class="section-title">Nuevas Adquisiciones</h2>
-        <div class="row">
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card product-card">
-                    <img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Blusa">
-                    <div class="card-body product-meta">
-                        <h5 class="card-title h6">Blusa Importada Seda</h5>
-                        <p class="product-price">RD$ 1,200</p>
-                        <button class="btn btn-add rounded-0" onclick="addToCart('Blusa Importada Seda')">Añadir al Carrito</button>
+    <section class="container py-5 mt-4 animate-on-scroll">
+        <div class="text-center mb-5">
+            <h6 class="text-uppercase text-muted tracking-wide mb-2">Explora Nuestras Opciones</h6>
+            <h2 class="display-5 fw-bold" style="font-family: 'Playfair Display', serif;">Compra por Categoría</h2>
+            <div class="divider-custom mx-auto mt-3"></div>
+        </div>
+        
+        <div class="row text-center g-4 justify-content-center">
+            <div class="col-6 col-md-3 category-item">
+                <a href="catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'perfumes')" class="text-decoration-none text-dark d-block">
+                    <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
+                        <img src="https://images.unsplash.com/photo-1594035910387-fea477942698?q=80&w=300&h=300&fit=crop" class="img-fluid category-img transition-img" alt="Perfumes">
+                        <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
+                            <i class="fas fa-search text-white fa-2x"></i>
+                        </div>
                     </div>
-                </div>
+                    <h5 class="fw-bold font-heading">Perfumes</h5>
+                </a>
             </div>
 
-            <div class="col-md-3 col-sm-6">
-                <div class="card product-card">
-                    <img src="https://images.unsplash.com/photo-1542272617-08f086302542?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Jeans">
-                    <div class="card-body product-meta">
-                        <h5 class="card-title h6">Skinny Jeans High Waist</h5>
-                        <p class="product-price">RD$ 1,800</p>
-                        <button class="btn btn-add rounded-0" onclick="addToCart('Skinny Jeans High Waist')">Añadir al Carrito</button>
+            <div class="col-6 col-md-3 category-item">
+                <a href="catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'jeans')" class="text-decoration-none text-dark d-block">
+                    <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=300&h=300&fit=crop" class="img-fluid category-img transition-img" alt="Jeans">
+                        <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
+                            <i class="fas fa-search text-white fa-2x"></i>
+                        </div>
                     </div>
-                </div>
+                    <h5 class="fw-bold font-heading">Jeans</h5>
+                </a>
             </div>
 
-            <div class="col-md-3 col-sm-6">
-                <div class="card product-card">
-                    <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Tenis">
-                    <div class="card-body product-meta">
-                        <h5 class="card-title h6">Tenis Urban Chic</h5>
-                        <p class="product-price">RD$ 2,500</p>
-                        <button class="btn btn-add rounded-0" onclick="addToCart('Tenis Urban Chic')">Añadir al Carrito</button>
+            <div class="col-6 col-md-3 category-item">
+                <a href="catalogo.html" onclick="localStorage.setItem('filtroPendiente', 't-shirts')" class="text-decoration-none text-dark d-block">
+                    <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=300&h=300&fit=crop" class="img-fluid category-img transition-img" alt="T-Shirts">
+                        <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
+                            <i class="fas fa-search text-white fa-2x"></i>
+                        </div>
                     </div>
-                </div>
+                    <h5 class="fw-bold font-heading">T-Shirts</h5>
+                </a>
             </div>
 
-            <div class="col-md-3 col-sm-6">
-                <div class="card product-card">
-                    <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Perfume">
-                    <div class="card-body product-meta">
-                        <h5 class="card-title h6">Perfume 'Essence'</h5>
-                        <p class="product-price">RD$ 3,200</p>
-                        <button class="btn btn-add rounded-0" onclick="addToCart('Perfume Essence')">Añadir al Carrito</button>
+            <div class="col-6 col-md-3 category-item">
+                <a href="catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'zapatos')" class="text-decoration-none text-dark d-block">
+                    <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=300&h=300&fit=crop" class="img-fluid category-img transition-img" alt="Zapatos">
+                        <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
+                            <i class="fas fa-search text-white fa-2x"></i>
+                        </div>
                     </div>
-                </div>
+                    <h5 class="fw-bold font-heading">Zapatos</h5>
+                </a>
             </div>
-
         </div>
     </section>
 
-    <footer id="contacto">
+    <section class="container py-5 border-top animate-on-scroll">
+        <div class="text-center mb-5">
+            <h6 class="text-uppercase text-muted tracking-wide mb-2">Lo Más Reciente</h6>
+            <h2 class="display-5 fw-bold" style="font-family: 'Playfair Display', serif;">Nuevas Adquisiciones</h2>
+            <div class="divider-custom mx-auto mt-3"></div>
+        </div>
+        
+        <div class="row" id="contenedor-destacados">
+            <div class="col-12 text-center py-5">
+                <div class="spinner-grow text-dark" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Cargando...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="catalogo.html" class="btn btn-outline-dark rounded-0 px-5 py-3 text-uppercase fw-bold transition-btn hover-fill">Ver Todo el Catálogo <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white pt-5 pb-3 mt-auto border-top border-4 border-secondary">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>Rosa's Shop</h5>
-                    <p class="text-muted">Solo lo mejor para ti. Tu tienda de confianza para ropa extranjera de alta calidad y estilo único.</p>
+                <div class="col-md-4 mb-4 pe-md-5">
+                    <h5 class="text-uppercase mb-3 fw-bold tracking-wide">Rosa's Shop</h5>
+                    <p class="small text-secondary lh-lg">Tu destino número uno para moda internacional y estilo exclusivo en Santo Domingo Oeste. Seleccionamos cada pieza pensando en ti.</p>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Enlaces Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#catalogo">Catálogo</a></li>
-                        <li><a href="#">Política de Envíos</a></li>
+                <div class="col-md-4 mb-4 ps-md-5">
+                    <h5 class="text-uppercase mb-3 fw-bold tracking-wide">Enlaces</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html" class="text-secondary text-decoration-none footer-link transition-color">Inicio</a></li>
+                        <li class="mb-2"><a href="catalogo.html" class="text-secondary text-decoration-none footer-link transition-color">Catálogo</a></li>
+                        <li class="mb-2"><a href="contacto.html" class="text-secondary text-decoration-none footer-link transition-color">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <h5>Contacto</h5>
-                    <p><i class="fas fa-map-marker-alt me-2"></i> Santo Domingo Oeste, RD</p>
-                    <p><i class="fas fa-phone me-2"></i> (849) 621-4533</p>
-                    <p><i class="fas fa-envelope me-2"></i> contacto@rosasshop.do</p>
+                    <h5 class="text-uppercase mb-3 fw-bold tracking-wide">Síguenos</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light rounded-circle social-btn transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle social-btn transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle social-btn transition-all"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p class="mb-0">&copy; 2024 Rosa's Shop. Todos los derechos reservados.</p>
+            <hr class="border-secondary mt-4 mb-3">
+            <div class="d-flex justify-content-between align-items-center flex-column flex-md-row small text-secondary">
+                <p class="mb-2 mb-md-0">© 2026 Rosa's Shop. Todos los derechos reservados.</p>
+                <p class="mb-0">Diseñado con <i class="fas fa-heart text-danger"></i></p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        function addToCart(productName) {
-            // Simulación simple de añadir al carrito
-            alert(`¡Has añadido "${productName}" a tu carrito!`);
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold font-heading" id="offcanvasCarritoLabel">Tu Carrito</h5>
+            <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column bg-light">
             
-            // Actualizar badge del carrito (visual)
-            const badge = document.querySelector('.badge');
-            let count = parseInt(badge.innerText);
-            badge.innerText = count + 1;
-        }
+            <div id="carrito-items" class="flex-grow-1 overflow-auto px-2">
+                </div>
 
-        // Navbar Change on Scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-sm');
-            } else {
-                navbar.classList.remove('shadow-sm');
-            }
-        });
-    </script>
+            <div class="border-top pt-4 mt-3 bg-white p-3 shadow-lg rounded-top-4">
+                <div class="d-flex justify-content-between mb-3 align-items-center">
+                    <span class="text-muted text-uppercase small fw-bold tracking-wide">Total Estimado:</span>
+                    <span class="h4 fw-bold mb-0 text-dark" id="carrito-total">RD$ 0</span>
+                </div>
+                <button onclick="enviarPedidoWhatsApp()" class="btn btn-dark w-100 py-3 rounded-0 fw-bold transition-btn shadow-sm mb-2 text-uppercase tracking-wide">
+                    <i class="fab fa-whatsapp me-2 fs-5"></i> Completar Pedido
+                </button>
+                <button onclick="vaciarCarrito()" class="btn btn-link text-muted w-100 btn-sm text-decoration-none transition-color">
+                    <i class="fas fa-trash-alt me-1"></i> Vaciar Carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
 </body>
 </html>

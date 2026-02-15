@@ -3,118 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | Rosa's Shop</title>
+    <title>Rosa's Shop | Contacto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <style>
-        :root { --rosa-accent: #e83e8c; --text-main: #333; }
-        body { font-family: 'Poppins', sans-serif; color: var(--text-main); padding-top: 80px; background-color: #fafafa;}
-        h1, h2, h3, .navbar-brand { font-family: 'Playfair Display', serif; }
-        .navbar { background-color: white !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .navbar-brand { font-size: 1.8rem; font-weight: 700; color: black !important;}
-        .nav-link { font-weight: 500; color: #333 !important; margin: 0 10px; }
-        .nav-link:hover, .nav-link.active { color: var(--rosa-accent) !important; }
-        
-        .contact-card { background: white; padding: 3rem; border-radius: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .form-control { border-radius: 0; border: 1px solid #ddd; padding: 12px; margin-bottom: 20px;}
-        .form-control:focus { border-color: var(--rosa-accent); box-shadow: none; }
-        .btn-send { background-color: black; color: white; border-radius: 0; padding: 12px 30px; font-weight: 600; letter-spacing: 1px; width: 100%; transition: all 0.3s;}
-        .btn-send:hover { background-color: var(--rosa-accent); color: white;}
-        
-        .info-item { margin-bottom: 25px; }
-        .info-item i { font-size: 1.5rem; color: var(--rosa-accent); width: 40px;}
-        
-        footer { background-color: #1a1a1a; color: #bbb; padding: 2rem 0; text-align: center; margin-top: 4rem;}
+        .animate-fade-left {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+        .animate-fade-right {
+            animation: fadeInRight 0.8s ease-out;
+        }
+        .contact-info-card {
+            transition: all 0.3s ease;
+        }
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+        }
+        .social-btn {
+            transition: all 0.3s ease;
+        }
+        .social-btn:hover {
+            background-color: var(--rosa-accent) !important;
+            color: white !important;
+            border-color: var(--rosa-accent) !important;
+            transform: rotate(10deg);
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" style="background-color: rgba(255,255,255,0.95); backdrop-filter: blur(5px);">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Rosa's <i>Shop</i></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/img/logo-shop-removebg.png" alt="Logo Rosa's Shop" class="navbar-logo me-2" style="height: 40px;">
+                <span style="font-family: 'Playfair Display', serif; font-weight: 700;">Rosa's <span style="font-weight: 300;">Shop</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
                     <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="contacto.html" style="color: var(--rosa-accent);">Contacto</a></li>
                 </ul>
+            </div>
+            <div class="cart-icon position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" style="cursor: pointer;">
+                <i class="fas fa-shopping-bag fa-lg text-dark"></i>
+                <span id="badge-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
             </div>
         </div>
     </nav>
 
-    <section class="container my-5 pt-4">
-        <div class="text-center mb-5">
-            <h1>Contáctanos</h1>
-            <p class="text-muted">¿Tienes dudas o quieres hacer un pedido directo?</p>
+    <header class="bg-light py-5 mt-5">
+        <div class="container text-center mt-3 animate-fade-left">
+            <h1 class="display-4 fw-bold" style="font-family: 'Playfair Display', serif;">Hablemos</h1>
+            <p class="lead text-muted">¿Tienes dudas sobre una talla o envío? Estamos aquí para ayudarte.</p>
         </div>
+    </header>
 
-        <div class="row">
-            <div class="col-lg-7 mb-4">
-                <div class="contact-card">
-                    <h3 class="mb-4">Envíanos un mensaje</h3>
-                    <form>
+    <div class="container py-5">
+        <div class="row g-5">
+            
+            <div class="col-lg-5 animate-fade-left" style="animation-delay: 0.2s;">
+                <div class="p-4 border bg-white h-100 shadow-sm contact-info-card">
+                    <h3 class="mb-4" style="font-family: 'Playfair Display', serif;">Información de Contacto</h3>
+                    <p class="text-muted mb-4">Puedes escribirnos directamente o visitarnos en nuestro punto de entrega.</p>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3 text-secondary"><i class="fas fa-map-marker-alt fa-2x"></i></div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Ubicación</h5>
+                            <p class="mb-0 text-muted">Santo Domingo Oeste, República Dominicana.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3 text-secondary"><i class="fas fa-phone-alt fa-2x"></i></div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Teléfono / WhatsApp</h5>
+                            <p class="mb-0 text-muted">(849) 621-4533</p>
+                            <small class="text-success fw-bold"><i class="fab fa-whatsapp"></i> Disponible para chat</small>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3 text-secondary"><i class="fas fa-envelope fa-2x"></i></div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Correo Electrónico</h5>
+                            <p class="mb-0 text-muted">ventas@rosasshop.do</p>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <h5 class="mb-3" style="font-family: 'Playfair Display', serif;">Síguenos</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-dark rounded-circle social-btn" style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-dark rounded-circle social-btn" style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 animate-fade-right" style="animation-delay: 0.4s;">
+                <div class="p-4 bg-white shadow-sm border h-100">
+                    <h3 class="mb-4" style="font-family: 'Playfair Display', serif;">Envíanos un mensaje</h3>
+                    <form id="contactForm">
                         <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Tu Nombre">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small text-uppercase fw-bold text-muted">Nombre</label>
+                                <input type="text" class="form-control rounded-0 p-3 bg-light border-0" placeholder="Tu nombre completo" required>
                             </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" placeholder="Tu Correo">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small text-uppercase fw-bold text-muted">Teléfono</label>
+                                <input type="tel" class="form-control rounded-0 p-3 bg-light border-0" placeholder="(849) 000-0000">
                             </div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Asunto (Ej. Consulta de talla)">
-                        <textarea class="form-control" rows="5" placeholder="Tu Mensaje..."></textarea>
-                        <button type="submit" class="btn btn-send">ENVIAR MENSAJE</button>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small text-uppercase fw-bold text-muted">Correo Electrónico</label>
+                            <input type="email" class="form-control rounded-0 p-3 bg-light border-0" placeholder="ejemplo@correo.com" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label small text-uppercase fw-bold text-muted">Mensaje</label>
+                            <textarea class="form-control rounded-0 p-3 bg-light border-0" rows="5" placeholder="Escribe tu consulta aquí..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-custom w-100 py-3 fw-bold text-uppercase tracking-wider">ENVIAR MENSAJE</button>
                     </form>
                 </div>
             </div>
 
-            <div class="col-lg-5">
-                <div class="contact-card h-100" style="background-color: #f8f9fa;">
-                    <h3 class="mb-4">Información Directa</h3>
-                    
-                    <div class="info-item d-flex align-items-center">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Ubicación</strong>
-                            <p class="mb-0 text-muted">Santo Domingo Oeste, DO</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item d-flex align-items-center">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <strong>WhatsApp / Teléfono</strong>
-                            <p class="mb-0 text-muted">(849) 621-4533</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item d-flex align-items-center">
-                        <i class="fas fa-truck"></i>
-                        <div>
-                            <strong>Envíos</strong>
-                            <p class="mb-0 text-muted">Delivery Incluido (Tú pagas el costo de la ruta)</p>
-                        </div>
-                    </div>
+        </div>
 
-                    <div class="mt-4 pt-3 border-top">
-                        <p class="small text-muted mb-2">Síguenos en nuestras redes:</p>
-                        <a href="#" class="text-dark me-3"><i class="fab fa-instagram fa-2x"></i></a>
+        <div class="row mt-5 animate-fade-left" style="animation-delay: 0.6s;">
+            <div class="col-12">
+                <div class="bg-light w-100 d-flex align-items-center justify-content-center text-muted border rounded-3 overflow-hidden shadow-sm" style="height: 350px;">
+                    <div class="text-center">
+                        <i class="fas fa-map-marked-alt fa-4x mb-3 text-secondary" style="opacity: 0.5;"></i>
+                        <p class="fw-bold">Visítanos en Santo Domingo Oeste</p>
+                        <a href="https://goo.gl/maps/placeholder" target="_blank" class="btn btn-sm btn-outline-secondary rounded-0 px-4">Abrir en Google Maps</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <p class="mb-0">&copy; 2026 Rosa's Shop. Todos los derechos reservados.</p>
+    <footer class="bg-dark text-white pt-5 pb-3 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase mb-3" style="letter-spacing: 2px; font-family: 'Playfair Display', serif;">Rosa's Shop</h5>
+                    <p class="small text-secondary">Tu destino número uno para moda internacional y estilo exclusivo en Santo Domingo Oeste.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase mb-3" style="letter-spacing: 2px; font-family: 'Playfair Display', serif;">Enlaces</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html" class="text-secondary text-decoration-none hover-light">Inicio</a></li>
+                        <li><a href="catalogo.html" class="text-secondary text-decoration-none hover-light">Catálogo</a></li>
+                        <li><a href="contacto.html" class="text-secondary text-decoration-none hover-light">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase mb-3" style="letter-spacing: 2px; font-family: 'Playfair Display', serif;">Contacto</h5>
+                    <p class="small text-secondary mb-1"><i class="fas fa-phone me-2"></i> (849) 621-4533</p>
+                    <p class="small text-secondary"><i class="fas fa-map-marker-alt me-2"></i> Santo Domingo Oeste, RD</p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center small text-secondary">
+                <p>&copy; 2026 Rosa's Shop. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
 
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="offcanvasCarritoLabel" style="font-family: 'Playfair Display', serif;">Tu Carrito</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div id="carrito-items" class="flex-grow-1 overflow-auto"></div>
+            <div class="border-top pt-3 mt-3">
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="h5">Total:</span>
+                    <span class="h5 fw-bold" id="carrito-total">RD$ 0</span>
+                </div>
+                <button onclick="enviarPedidoWhatsApp()" class="btn btn-success w-100 py-3 rounded-0 fw-bold text-uppercase">
+                    <i class="fab fa-whatsapp me-2"></i> Completar Pedido
+                </button>
+                <button onclick="vaciarCarrito()" class="btn btn-outline-danger w-100 mt-2 btn-sm rounded-0 text-uppercase">
+                    Vaciar Carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

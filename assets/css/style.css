@@ -1,0 +1,369 @@
+/* =========================================
+   1. VARIABLES & CONFIGURACIÓN GLOBAL
+   ========================================= */
+:root {
+    --rosa-accent: #e83e8c;
+    --rosa-light: #fce4ec;
+    --dark-bg: #1a1a1a;
+    --light-bg: #f8f9fa;
+    --text-main: #333;
+    --text-muted: #6c757d;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    padding-top: 76px; /* Ajuste para navbar fijo */
+    overflow-x: hidden;
+    background-color: #fff;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, .navbar-brand {
+    font-family: var(--font-heading);
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: var(--transition-smooth);
+}
+
+/* =========================================
+   2. ANIMACIONES
+   ========================================= */
+.animate-fade {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* =========================================
+   3. NAVBAR & LOGO
+   ========================================= */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    padding: 0.8rem 0;
+    transition: var(--transition-smooth);
+}
+
+.navbar-logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover .navbar-logo {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #333 !important;
+    margin: 0 10px;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--rosa-accent);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after, 
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    color: var(--rosa-accent) !important;
+}
+
+/* =========================================
+   4. COMPONENTES DE TIENDA (CARDS)
+   ========================================= */
+.product-card {
+    border: none;
+    transition: var(--transition-smooth);
+    background: #fff;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-md) !important;
+}
+
+.card-img-top {
+    height: 320px;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.08);
+}
+
+.product-meta {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.product-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.btn-outline-dark {
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: var(--transition-smooth);
+}
+
+.btn-outline-dark:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* =========================================
+   5. CARRITO (BADGE & OFFCANVAS)
+   ========================================= */
+.cart-icon {
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    padding: 8px;
+}
+
+.cart-icon:hover { 
+    color: var(--rosa-accent);
+    transform: scale(1.1);
+}
+
+#badge-carrito {
+    font-size: 0.65rem;
+    background-color: var(--rosa-accent) !important;
+}
+
+.offcanvas-header {
+    background-color: var(--light-bg);
+}
+
+#carrito-items::-webkit-scrollbar {
+    width: 5px;
+}
+
+#carrito-items::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+/* =========================================
+   6. SECCIONES ESPECÍFICAS
+   ========================================= */
+
+/* Hero Section */
+.hero-section {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Mejora del botón Hero para mayor visibilidad */
+.hero-section .btn-custom {
+    background-color: #fff !important; /* Fondo blanco sólido */
+    color: #000 !important;           /* Texto negro para máximo contraste */
+    border: 2px solid #fff !important;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra para despegarlo del fondo */
+}
+
+.hero-section .btn-custom:hover {
+    background-color: var(--rosa-accent) !important; /* Cambia a rosa al pasar el mouse */
+    border-color: var(--rosa-accent) !important;
+    color: #fff !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(232, 62, 140, 0.4);
+}
+
+/* Animación de entrada personalizada si no la tienes definida */
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Divisores adaptables (Solo aparecen en escritorio) */
+@media (min-width: 768px) {
+    .border-end-md {
+        border-right: 1px solid #eee !important;
+    }
+}
+
+/* Efecto visual al pasar el mouse por las tarjetas de información */
+.info-card {
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    background-color: #fcfcfc;
+    transform: translateY(-5px);
+}
+
+.info-card:hover .icon-float {
+    color: var(--rosa-accent) !important;
+    transform: scale(1.1);
+}
+
+.icon-float {
+    transition: all 0.3s ease;
+}
+
+/* Ajuste de sombra para que se vea más profundo */
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
+
+/* Sidebar Filtros */
+.filter-sidebar {
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.form-range::-webkit-slider-thumb {
+    background: var(--rosa-accent);
+}
+
+.form-check-input:checked {
+    background-color: var(--rosa-accent);
+    border-color: var(--rosa-accent);
+}
+
+/* Nosotros - Frame de Imagen */
+.about-img-frame {
+    position: relative;
+    display: inline-block;
+}
+
+.about-img-frame::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--dark-bg);
+    z-index: -1;
+    transition: var(--transition-smooth);
+}
+
+.about-img-frame:hover::after {
+    top: 0;
+    left: 0;
+    border-color: var(--rosa-accent);
+}
+
+/* Métodos de Pago */
+.payment-box {
+    border: 1px solid #eee;
+    padding: 2rem;
+    transition: var(--transition-smooth);
+}
+
+.payment-box:hover {
+    border-color: var(--dark-bg);
+    background-color: #fcfcfc;
+}
+
+/* Contacto - Social Buttons */
+.social-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    transition: var(--transition-smooth);
+}
+
+.social-btn:hover {
+    background-color: var(--rosa-accent) !important;
+    color: #fff !important;
+    transform: rotate(15deg) scale(1.1);
+    border-color: var(--rosa-accent);
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+footer {
+    background-color: var(--dark-bg);
+    color: #999;
+}
+
+footer h5 { 
+    color: #fff; 
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+footer a:hover { 
+    color: #fff;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #2a2a2a;
+    padding: 1.5rem 0;
+    font-size: 0.85rem;
+}
+
+/* =========================================
+   8. MEDIA QUERIES
+   ========================================= */
+@media (max-width: 768px) {
+    body { padding-top: 65px; }
+    .hero-section h1 { font-size: 2.5rem !important; }
+    .navbar-logo { height: 35px; }
+    .border-start, .border-end { border: none !important; }
+    .about-img-frame::after { display: none; }
+}

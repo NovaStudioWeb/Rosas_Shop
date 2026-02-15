@@ -3,143 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo | Rosa's Shop</title>
+    <title>Rosa's Shop | Catálogo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <style>
-        /* Variables globales y Navbar/Footer (Igual que index) */
-        :root { --rosa-accent: #e83e8c; --dark-bg: #1a1a1a; --light-bg: #f8f9fa; --text-main: #333; }
-        body { font-family: 'Poppins', sans-serif; color: var(--text-main); }
-        h1, h2, h3, h4, .navbar-brand { font-family: 'Playfair Display', serif; }
-        .navbar { padding: 1rem 0; background-color: rgba(255, 255, 255, 0.95) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .navbar-brand { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; color: black !important;}
-        .nav-link { font-weight: 500; color: #333 !important; margin: 0 10px; transition: color 0.3s ease; }
-        .nav-link:hover, .nav-link.active { color: var(--rosa-accent) !important; }
-        .cart-icon:hover { color: var(--rosa-accent); cursor: pointer; }
+        /* Animación de entrada suave sin depender de JS externo para la carga inicial */
+        .fade-in-init {
+            animation: fadeInSimple 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInSimple {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .filter-sidebar {
+            transition: all 0.3s ease;
+            border-radius: 12px !important;
+            z-index: 10;
+        }
+
+        /* Evita que el contenido desaparezca si el observer falla */
+        #contenedor-catalogo {
+            min-height: 400px;
+        }
+
+        .product-card {
+            transition: transform 0.3s ease;
+        }
         
-        /* Estilos específicos de Catálogo */
-        .page-header { background-color: var(--light-bg); padding: 6rem 0 3rem; text-align: center; }
-        .filter-sidebar h5 { border-bottom: 2px solid var(--rosa-accent); padding-bottom: 10px; margin-bottom: 20px; }
-        .form-check-label { font-weight: 300; }
-        .product-card { border: none; transition: transform 0.3s ease, box-shadow 0.3s ease; margin-bottom: 2rem; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card-img-top { height: 300px; object-fit: cover; }
-        .product-meta { text-align: center; padding: 1.5rem; }
-        .product-price { font-weight: 700; margin: 0.5rem 0; }
-        .btn-add { background-color: transparent; color: #333; border: 1px solid #333; width: 100%; padding: 8px; transition: all 0.3s; }
-        .btn-add:hover { background-color: var(--rosa-accent); border-color: var(--rosa-accent); color: white; }
-        
-        /* Footer */
-        footer { background-color: var(--dark-bg); color: #bbb; padding-top: 4rem; margin-top: 4rem; }
-        footer h5 { color: white; } footer a { color: #bbb; text-decoration: none; }
-        footer a:hover { color: var(--rosa-accent); }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100"> 
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" style="background-color: rgba(255,255,255,0.95); backdrop-filter: blur(5px);">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Rosa's <span style="font-weight: 300; font-style: italic;">Shop</span></a>
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/img/logo-shop-removebg.png" alt="Logo Rosa's Shop" class="navbar-logo me-2" style="height: 40px;">
+                <span style="font-family: 'Playfair Display', serif; font-weight: 700;">Rosa's <span style="font-weight: 300;">Shop</span></span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="catalogo.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="catalogo.html" style="color: var(--rosa-accent);">Catálogo</a></li>
                     <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
                 </ul>
             </div>
-            <div class="cart-icon"><i class="fas fa-shopping-bag fa-lg"></i></div>
+            <div class="cart-icon position-relative transition-all" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" style="cursor: pointer;">
+                <i class="fas fa-shopping-bag fa-lg text-dark"></i>
+                <span id="badge-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
+            </div>
         </div>
     </nav>
 
-    <header class="page-header">
-        <div class="container">
-            <h1>Nuestro Catálogo</h1>
-            <p class="text-muted">Descubre tu nueva adquisición.</p>
+    <header class="bg-light py-5 mt-5 fade-in-init">
+        <div class="container text-center mt-4">
+            <h1 class="display-4 fw-bold" style="font-family: 'Playfair Display', serif;">Nuestra Colección</h1>
+            <p class="lead text-muted">Explora las últimas tendencias seleccionadas para ti.</p>
         </div>
     </header>
 
-    <section class="container my-5">
+    <div class="container py-5">
         <div class="row">
-            <aside class="col-lg-3 mb-4 filter-sidebar">
-                <h5>Categorías</h5>
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="cat1">
-                    <label class="form-check-label" for="cat1">Perfumes</label>
-                </div>
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="cat2" checked>
-                    <label class="form-check-label" for="cat2">Jeans</label>
-                </div>
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="cat3">
-                    <label class="form-check-label" for="cat3">T-Shirts</label>
-                </div>
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="checkbox" id="cat4">
-                    <label class="form-check-label" for="cat4">Zapatos</label>
-                </div>
+            <aside class="col-lg-3 mb-5">
+                <div class="filter-sidebar sticky-top p-4 bg-white shadow-sm border" style="top: 100px;">
+                    <div class="mb-4">
+                        <h5 class="mb-3" style="font-family: 'Playfair Display', serif;">Buscar</h5>
+                        <div class="input-group shadow-sm rounded">
+                            <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                            <input type="text" id="searchInput" class="form-control border-start-0 shadow-none" placeholder="Ej. Jeans...">
+                        </div>
+                    </div>
 
-                <h5>Precio</h5>
-                <input type="range" class="form-range mb-3" min="0" max="5000" id="priceRange">
-                <div class="d-flex justify-content-between text-muted small">
-                    <span>RD$ 0</span>
-                    <span>RD$ 5000+</span>
+                    <hr class="my-4 text-muted" style="opacity: 0.1;">
+
+                    <h5 class="mb-3" style="font-family: 'Playfair Display', serif;">Categorías</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="form-check">
+                            <input class="form-check-input filter-check shadow-none" type="checkbox" value="perfumes" id="cat1">
+                            <label class="form-check-label w-100" for="cat1">Perfumes</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-check shadow-none" type="checkbox" value="jeans" id="cat2">
+                            <label class="form-check-label w-100" for="cat2">Jeans</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-check shadow-none" type="checkbox" value="t-shirts" id="cat3">
+                            <label class="form-check-label w-100" for="cat3">T-Shirts</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input filter-check shadow-none" type="checkbox" value="zapatos" id="cat4">
+                            <label class="form-check-label w-100" for="cat4">Zapatos</label>
+                        </div>
+                    </div>
+
+                    <hr class="my-4 text-muted" style="opacity: 0.1;">
+
+                    <h5 class="mb-3" style="font-family: 'Playfair Display', serif;">Precio Máximo</h5>
+                    <input type="range" class="form-range" min="0" max="10000" step="100" id="priceRange" value="10000">
+                    <div class="d-flex justify-content-between small text-muted fw-bold mt-2">
+                        <span>RD$ 0</span>
+                        <span id="priceLabel" class="text-dark">RD$ 10,000</span>
+                    </div>
+
+                    <button id="btnReset" class="btn btn-outline-dark w-100 mt-4 py-2 rounded-2 text-uppercase fw-bold">
+                        <i class="fas fa-sync-alt me-2"></i> Limpiar Filtros
+                    </button>
                 </div>
             </aside>
 
             <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card product-card">
-                            <img src="https://images.unsplash.com/photo-1542272617-08f086302542?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Jeans">
-                            <div class="card-body product-meta">
-                                <h5 class="card-title h6">Skinny Jeans High Waist</h5>
-                                <p class="product-price">RD$ 1,800</p>
-                                <button class="btn btn-add rounded-0">Añadir</button>
-                            </div>
-                        </div>
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                    <p class="mb-2 mb-md-0 text-muted small"><span id="contadorProductos" class="fw-bold text-dark fs-6">0</span> productos encontrados</p>
+                    
+                    <div class="d-flex align-items-center bg-light p-2 rounded shadow-sm">
+                        <label for="sortSelect" class="me-2 small text-muted text-nowrap fw-bold mb-0"><i class="fas fa-sort-amount-down me-1"></i> Ordenar:</label>
+                        <select class="form-select form-select-sm border-0 bg-transparent shadow-none" id="sortSelect" style="width: auto; cursor: pointer;">
+                            <option value="defecto">Relevancia</option>
+                            <option value="precio-menor">Precio: Menor a Mayor</option>
+                            <option value="precio-mayor">Precio: Mayor a Menor</option>
+                        </select>
                     </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card product-card">
-                            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="T-shirt">
-                            <div class="card-body product-meta">
-                                <h5 class="card-title h6">T-Shirt Básica Premium</h5>
-                                <p class="product-price">RD$ 850</p>
-                                <button class="btn btn-add rounded-0">Añadir</button>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-md-4 col-sm-6">
-                        <div class="card product-card">
-                            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Zapatos">
-                            <div class="card-body product-meta">
-                                <h5 class="card-title h6">Tenis Clásicos Blancos</h5>
-                                <p class="product-price">RD$ 2,200</p>
-                                <button class="btn btn-add rounded-0">Añadir</button>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-            </div>
-        </div>
-    </section>
+                </div>
 
-    <footer>
-        <div class="container">
-            <div class="row text-center text-md-start">
-                <div class="col-md-12 mb-4">
-                    <p class="mb-0 text-center">&copy; 2026 Rosa's Shop. Todos los derechos reservados.</p>
+                <div class="row g-4" id="contenedor-catalogo">
+                    <div class="col-12 text-center py-5">
+                        <div class="spinner-border text-dark" role="status" style="width: 3rem; height: 3rem;">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                        <p class="mt-3 text-muted fw-bold">Preparando la colección...</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <footer class="bg-dark text-white pt-5 pb-3 mt-auto">
+        <div class="container text-center">
+            <p>© 2026 Rosa's Shop. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="offcanvasCarritoLabel" style="font-family: 'Playfair Display', serif;">Tu Carrito</h5>
+            <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column bg-light">
+            <div id="carrito-items" class="flex-grow-1 overflow-auto px-2"></div>
+            <div class="border-top pt-4 mt-3 bg-white p-3 shadow-lg rounded-top-4">
+                <div class="d-flex justify-content-between mb-3 align-items-center">
+                    <span class="text-muted text-uppercase small fw-bold tracking-wide">Total Estimado:</span>
+                    <span class="h4 fw-bold mb-0 text-dark" id="carrito-total">RD$ 0</span>
+                </div>
+                <button onclick="enviarPedidoWhatsApp()" class="btn btn-dark w-100 py-3 rounded-2 fw-bold text-uppercase">
+                    <i class="fab fa-whatsapp me-2"></i> Completar Pedido
+                </button>
+                <button onclick="vaciarCarrito()" class="btn btn-outline-danger w-100 mt-2 py-2 rounded-2 text-uppercase">
+                    <i class="fas fa-trash-alt me-2"></i> Vaciar Carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
