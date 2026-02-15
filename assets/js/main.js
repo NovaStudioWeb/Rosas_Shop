@@ -11,7 +11,7 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 async function cargarDatos() {
     try {
         // Asegúrate de que la ruta coincida con tu estructura de carpetas
-        const respuesta = await fetch('assets/data/productos.json'); 
+        const respuesta = await fetch('./assets/data/productos.json'); 
         if (!respuesta.ok) throw new Error("No se pudo conectar con la base de datos de productos.");
         
         database = await respuesta.json();
@@ -70,21 +70,39 @@ function iniciarApp() {
    NUEVO: LÓGICA DE ANIMACIONES (SCROLL)
    ========================================= */
 function initScrollAnimations() {
+    // Configuración del observador
     const observerOptions = {
-        threshold: 0.15
+        root: null, // Usa el viewport del navegador
+        rootMargin: '0px',
+        threshold: 0.1 // Se activa cuando el 10% del elemento es visible
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Añade la clase que activa la animación CSS
                 entry.target.classList.add('active');
+                // Deja de observar el elemento una vez animado para ahorrar recursos
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Seleccionamos elementos con la clase 'reveal' o 'animate-on-scroll'
-    document.querySelectorAll('.reveal, .animate-on-scroll').forEach(el => observer.observe(el));
+    // Seleccionamos todos los elementos que deben animarse
+    const elementosAnimables = document.querySelectorAll('.reveal, .animate-on-scroll');
+    
+    elementosAnimables.forEach(el => {
+        observer.observe(el);
+    });
+
+    // Fallback de seguridad: si el usuario tiene preferencias de reducción de movimiento
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) {
+        elementosAnimables.forEach(el => {
+            el.classList.add('active'); // Muestra todo inmediatamente sin animar
+            el.style.transition = 'none';
+        });
+    }
 }
 
 /* =========================================
@@ -388,3 +406,4 @@ if (formularioContacto) {
         formularioContacto.reset(); 
     });
 }
+

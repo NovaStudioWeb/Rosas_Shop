@@ -367,3 +367,18 @@ footer a:hover {
     .border-start, .border-end { border: none !important; }
     .about-img-frame::after { display: none; }
 }
+
+/* --- ANIMACIONES DE SCROLL (REVEAL) --- */
+
+/* Estado inicial: invisible y desplazado hacia abajo */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out; /* Suavidad de la animación */
+}
+
+/* Estado activo: visible y en su posición original */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
