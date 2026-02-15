@@ -44,24 +44,37 @@ function iniciarApp() {
     const path = window.location.pathname;
     
     // Lógica específica según la página actual
-    if (path.includes('index.html') || path === '/' || path.endsWith('/')) {
+    // MODIFICADO: Ahora busca 'index' en lugar de 'index.html' para mayor compatibilidad
+    if (path.includes('index') || path === '/' || path.endsWith('/')) {
         renderizarDestacados();
     } 
-    else if (path.includes('catalogo.html')) {
+    // MODIFICADO: Ahora busca 'catalogo' a secas. Esto arregla el error en Netlify.
+    else if (path.includes('catalogo')) {
         iniciarSistemaFiltros();
 
         // --- LÓGICA DE DETECCIÓN POR MEMORIA (localStorage) ---
         const categoriaSolicitada = localStorage.getItem('filtroPendiente');
 
         if (categoriaSolicitada) {
-            const checkbox = document.querySelector(`.filter-check[value="${categoriaSolicitada}"]`);
-            if (checkbox) {
-                checkbox.checked = true;
-                // Disparamos el filtrado
-                checkbox.dispatchEvent(new Event('change'));
-            }
+            // Pequeño retraso de seguridad para asegurar que el HTML del filtro ya exista
+            setTimeout(() => {
+                const checkbox = document.querySelector(`.filter-check[value="${categoriaSolicitada}"]`);
+                if (checkbox) {
+                    checkbox.checked = true;
+                    // Disparamos el filtrado
+                    checkbox.dispatchEvent(new Event('change'));
+                }
+            }, 50); // 50ms de espera es imperceptible pero ayuda a la estabilidad
+
             // LIMPIEZA: Borramos el filtro de la memoria
             localStorage.removeItem('filtroPendiente');
+        }
+    }
+    // Agregamos contacto por si acaso, usando la misma lógica flexible
+    else if (path.includes('contacto')) {
+        // Si tienes una función para contacto, iría aquí.
+        if (typeof initFormularioContacto === 'function') {
+            initFormularioContacto();
         }
     }
 }
