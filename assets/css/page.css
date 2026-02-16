@@ -1,0 +1,219 @@
+/* =========================================
+   1. ANIMACIONES
+   ========================================= */
+.animate-fade {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación Reveal (Scroll) */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   2. PRODUCT CARDS & TIENDA
+   ========================================= */
+.product-card {
+    border: none;
+    transition: var(--transition-smooth);
+    background: #fff;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-md) !important;
+}
+
+.card-img-top {
+    height: 320px;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.08);
+}
+
+.product-meta {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.product-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+/* =========================================
+   3. HERO & SECCIONES INFO
+   ========================================= */
+.hero-section {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Botón Hero Premium */
+.hero-section .btn-custom {
+    background-color: #fff !important;
+    color: #000 !important;
+    border: 2px solid #fff !important;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section .btn-custom:hover {
+    background-color: var(--rosa-accent) !important;
+    border-color: var(--rosa-accent) !important;
+    color: #fff !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(232, 62, 140, 0.4);
+}
+
+/* Tarjetas de Información */
+.info-card {
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    background-color: #fcfcfc;
+    transform: translateY(-5px);
+}
+
+.info-card:hover .icon-float {
+    color: var(--rosa-accent) !important;
+    transform: scale(1.1);
+}
+
+.icon-float { transition: all 0.3s ease; }
+.shadow-lg { box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important; }
+
+@media (min-width: 768px) {
+    .border-end-md { border-right: 1px solid #eee !important; }
+}
+
+/* =========================================
+   4. COMPONENTES EXTRA (About, Filtros, Contacto)
+   ========================================= */
+/* Sidebar Filtros */
+.filter-sidebar { background-color: #fff; border-radius: 8px; }
+.form-range::-webkit-slider-thumb { background: var(--rosa-accent); }
+.form-check-input:checked { background-color: var(--rosa-accent); border-color: var(--rosa-accent); }
+
+/* Nosotros Frame */
+.about-img-frame { position: relative; display: inline-block; }
+.about-img-frame::after {
+    content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%;
+    border: 2px solid var(--dark-bg); z-index: -1; transition: var(--transition-smooth);
+}
+.about-img-frame:hover::after { top: 0; left: 0; border-color: var(--rosa-accent); }
+
+/* Métodos de Pago & Social */
+.payment-box { border: 1px solid #eee; padding: 2rem; transition: var(--transition-smooth); }
+.payment-box:hover { border-color: var(--dark-bg); background-color: #fcfcfc; }
+
+.social-btn {
+    width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
+    border: 1px solid #ddd; border-radius: 50%; transition: var(--transition-smooth);
+}
+.social-btn:hover {
+    background-color: var(--rosa-accent) !important; color: #fff !important;
+    transform: rotate(15deg) scale(1.1); border-color: var(--rosa-accent);
+}
+
+/* =========================================
+   5. FOOTER PREMIUM (ACTUALIZADO)
+   ========================================= */
+/* Estilos Base del Footer */
+footer { background-color: var(--dark-bg); color: #999; }
+footer h5 { color: #fff; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+.footer-bottom { border-top: 1px solid #2a2a2a; padding: 1.5rem 0; font-size: 0.85rem; }
+
+/* Detalles Premium */
+.text-pink { color: #e83e8c; }
+
+.footer-link { transition: all 0.3s ease; }
+.footer-link:hover { color: #fff !important; transform: translateX(5px); }
+
+/* Botones sociales circulares y modernos */
+.social-btn-premium {
+    width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
+    background-color: rgba(255, 255, 255, 0.05); color: #fff; border-radius: 50%;
+    text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.social-btn-premium:hover {
+    background-color: #e83e8c; border-color: #e83e8c; color: #fff;
+    transform: translateY(-5px) scale(1.1); box-shadow: 0 10px 20px rgba(232, 62, 140, 0.3);
+}
+
+/* Estilo para la firma de Nova Studio Web */
+.nova-badge {
+    background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px;
+    transition: all 0.3s ease; display: inline-flex; align-items: center;
+}
+.nova-badge:hover { background: #fff; } /* Fondo blanco al pasar el mouse */
+
+/* Texto negro al hover */
+.nova-badge:hover span, 
+.nova-badge:hover i { color: #000; }
+
+/* Imagen del logo personal al hover */
+.nova-logo-img { height: 24px; width: auto; transition: all 0.3s ease; }
+.nova-badge:hover .nova-logo-img { filter: brightness(0); } /* Se vuelve negro */
+
+/* Animación Corazón */
+.animate-pulse { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+/* =========================================
+   6. RESPONSIVE MOBILE (PÁGINAS Y SECCIONES)
+   ========================================= */
+@media (max-width: 768px) {
+    /* --- HERO SECTION --- */
+    .hero-section {
+        background-attachment: scroll !important; 
+        background-position: center center;
+        height: auto !important; 
+        min-height: 85vh; 
+        padding-top: 40px;
+    }
+    .hero-section h1 { font-size: 2.2rem !important; line-height: 1.2; }
+    .hero-section p.lead { font-size: 1rem; letter-spacing: 1px !important; }
+    .animate-bounce { bottom: 20px; }
+
+    /* --- INFO CARDS --- */
+    .info-card { padding: 2rem !important; margin-bottom: 0; }
+    .border-end-md { border-right: none !important; border-bottom: 1px solid #eee; }
+    .info-card-link:last-child .info-card { border-bottom: none; border-radius: 0 0 10px 10px; }
+    .col-12.bg-white.shadow-lg { border-radius: 15px; }
+
+    /* --- CATEGORÍAS --- */
+    .category-item h5 { font-size: 0.9rem; }
+
+    /* --- FOOTER --- */
+    footer { text-align: center !important; }
+    footer .d-flex.gap-3 { justify-content: center; }
+    .footer-bottom .d-flex { flex-direction: column; gap: 15px; }
+    .text-md-end { text-align: center !important; }
+}
