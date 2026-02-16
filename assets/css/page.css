@@ -142,18 +142,99 @@
 }
 
 /* =========================================
-   5. FOOTER PREMIUM (ACTUALIZADO)
+   FOOTER PREMIUM V2
    ========================================= */
-/* Estilos Base del Footer */
-footer { background-color: var(--dark-bg); color: #999; }
-footer h5 { color: #fff; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
-.footer-bottom { border-top: 1px solid #2a2a2a; padding: 1.5rem 0; font-size: 0.85rem; }
+.footer-premium-v2 {
+    background-color: #0f0f0f; /* Fondo oscuro premium */
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
 
-/* Detalles Premium */
-.text-pink { color: #e83e8c; }
+.footer-top-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rosa-accent), #ff8fa3, var(--rosa-accent));
+    box-shadow: 0 0 15px rgba(232, 62, 140, 0.5);
+}
 
-.footer-link { transition: all 0.3s ease; }
-.footer-link:hover { color: #fff !important; transform: translateX(5px); }
+.footer-heading {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--rosa-accent);
+}
+
+.footer-list li { margin-bottom: 12px; }
+
+.footer-link-modern {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+
+.footer-link-modern:hover {
+    color: #fff;
+    padding-left: 8px;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+/* Redes Sociales "Glass" */
+.social-glass {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.4s ease;
+}
+
+.social-glass:hover {
+    background: var(--rosa-accent);
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 5px 15px rgba(232, 62, 140, 0.4);
+    border-color: var(--rosa-accent);
+}
+
+/* Badge Nova Studio */
+.nova-pill {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 6px 16px;
+    border-radius: 50px;
+    display: inline-flex; align-items: center;
+    transition: all 0.3s ease;
+}
+
+.nova-pill:hover {
+    background: #fff;
+    border-color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255,255,255,0.2);
+}
+
+.nova-pill:hover span { color: #000 !important; }
+.nova-icon { transition: filter 0.3s; }
+.nova-pill:hover .nova-icon { filter: brightness(0); }
 
 /* Botones sociales circulares y modernos */
 .social-btn-premium {
