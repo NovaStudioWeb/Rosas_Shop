@@ -7,15 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/page.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/page.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm transition-navbar" style="background-color: rgba(255,255,255,0.95); backdrop-filter: blur(5px);">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="assets/img/logo-shop-removebg.png" alt="Logo Rosa's Shop" class="navbar-logo me-2 transition-logo" style="height: 40px;">
+            <a class="navbar-brand d-flex align-items-center" href="./index.html">
+                <img src="./assets/img/logo-shop-removebg.png" alt="Logo Rosa's Shop" class="navbar-logo me-2 transition-logo" style="height: 40px;">
                 <span class="d-none d-sm-inline">Rosa's <span class="fw-light">Shop</span></span>
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -23,10 +23,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="catalogo.html">Catálogo</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="nosotros.html">Nosotros</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="./index.html">Inicio</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="./catalogo.html">Catálogo</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="./nosotros.html">Nosotros</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="./contacto.html">Contacto</a></li>
                 </ul>
             </div>
             <div class="cart-icon position-relative transition-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" style="cursor: pointer;">
@@ -36,112 +36,190 @@
         </div>
     </nav>
 
-    <header class="bg-white pt-5 pb-4 mt-5 border-bottom">
-        <div class="container mt-4">
-            <h1 class="display-5 fw-bold text-center" style="font-family: 'Playfair Display', serif;">Términos y Condiciones</h1>
-            <p class="text-center text-muted">Última actualización: Febrero 2026</p>
+    <header class="pt-5 pb-5 mt-5 border-bottom position-relative overflow-hidden" style="background: linear-gradient(to right, #f8f9fa, #fff, #f8f9fa);">
+        <div class="container mt-4 position-relative z-1">
+            <nav aria-label="breadcrumb" class="mb-3 animate-fade-in-up">
+                <ol class="breadcrumb justify-content-center small text-uppercase tracking-wide">
+                    <li class="breadcrumb-item"><a href="./index.html" class="text-decoration-none text-muted">Inicio</a></li>
+                    <li class="breadcrumb-item active text-dark fw-bold" aria-current="page">Términos</li>
+                </ol>
+            </nav>
+            <h1 class="display-5 fw-bold text-center animate-fade-in-up delay-1" style="font-family: 'Playfair Display', serif;">Términos y Condiciones</h1>
+            <div class="divider-custom mx-auto mt-3" style="width: 50px; height: 3px; background-color: #e83e8c;"></div>
+            <p class="text-center text-muted mt-3 animate-fade-in-up delay-2">Última actualización: Febrero 2026</p>
         </div>
     </header>
 
-    <section class="container my-5 animate-fade-in-up">
+    <section class="container my-5 animate-fade-in-up delay-3">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="bg-white p-5 shadow-sm rounded-3">
-                    
-                    <h4 class="fw-bold mb-3">1. Introducción</h4>
-                    <p class="text-secondary mb-4">Bienvenido a <strong>Rosa's Shop</strong>. Al acceder a nuestro sitio web y realizar pedidos, aceptas los siguientes términos y condiciones. Nos reservamos el derecho de modificar estas condiciones en cualquier momento sin previo aviso.</p>
+                <div class="bg-white p-5 shadow rounded-3 border-top border-4 border-secondary position-relative">
+                    <i class="fas fa-balance-scale position-absolute top-0 end-0 m-4 text-muted opacity-10 fa-4x"></i>
 
-                    <h4 class="fw-bold mb-3">2. Productos y Disponibilidad</h4>
-                    <p class="text-secondary mb-4">Nos esforzamos por mostrar los colores y características de nuestros productos con la mayor precisión posible. Sin embargo, no podemos garantizar que la visualización en tu pantalla sea 100% exacta. Todos los pedidos están sujetos a disponibilidad de stock.</p>
+                    <div class="legal-content">
+                        
+                        <div class="mb-5">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">1</span>
+                                Introducción
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Bienvenido a <strong>Rosa's Shop</strong>. Al acceder a nuestro sitio web y realizar pedidos, aceptas tácitamente los términos y condiciones aquí descritos. Estas normas están diseñadas para garantizar una experiencia de compra segura y transparente para todos.
+                            </p>
+                        </div>
 
-                    <h4 class="fw-bold mb-3">3. Precios y Pagos</h4>
-                    <p class="text-secondary mb-4">Todos los precios están expresados en Pesos Dominicanos (RD$). Nos reservamos el derecho de cambiar los precios en cualquier momento. El pago se coordina directamente a través de WhatsApp y puede realizarse mediante transferencia bancaria o efectivo contra entrega (según disponibilidad).</p>
+                        <div class="mb-5">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">2</span>
+                                Productos y Disponibilidad
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Nos esforzamos por capturar la esencia de cada prenda en nuestras fotografías. Sin embargo, ten en cuenta que:
+                                <ul class="text-secondary ps-5 mt-2">
+                                    <li>Los colores pueden variar ligeramente según la calibración de tu pantalla.</li>
+                                    <li>Todos los pedidos están sujetos a la confirmación final de stock.</li>
+                                </ul>
+                            </p>
+                        </div>
 
-                    <h4 class="fw-bold mb-3">4. Envíos y Entregas</h4>
-                    <p class="text-secondary mb-4">Realizamos envíos en Santo Domingo Oeste y zonas aledañas. Los tiempos de entrega son estimados y pueden variar. El costo del envío corre por cuenta del cliente, a menos que se indique una promoción específica.</p>
+                        <div class="mb-5">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">3</span>
+                                Precios y Pagos
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Todos los precios están expresados en Pesos Dominicanos (RD$). El proceso de pago es personalizado y seguro:
+                                <br>• Se coordina directamente a través de nuestro WhatsApp oficial.
+                                <br>• Aceptamos transferencia bancaria y efectivo contra entrega (sujeto a zona).
+                            </p>
+                        </div>
 
-                    <h4 class="fw-bold mb-3">5. Política de Cambios</h4>
-                    <p class="text-secondary mb-4">Por higiene y calidad, <strong>no aceptamos devoluciones de dinero</strong>. Solo se aceptan cambios por talla o defecto de fábrica dentro de las 48 horas siguientes a la entrega. La prenda debe estar sin uso, con etiquetas y en su empaque original.</p>
+                        <div class="mb-5">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">4</span>
+                                Envíos y Logística
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Realizamos entregas ágiles en Santo Domingo Oeste y zonas aledañas.
+                                <br>• Los tiempos de entrega son estimados y pueden verse afectados por factores externos.
+                                <br>• El costo del envío corre por cuenta del cliente, salvo promociones específicas.
+                            </p>
+                        </div>
 
-                    <h4 class="fw-bold mb-3">6. Propiedad Intelectual</h4>
-                    <p class="text-secondary mb-0">Todo el contenido de este sitio (imágenes, textos, logotipos) es propiedad de Rosa's Shop o se utiliza con licencia. Está prohibida su reproducción sin autorización.</p>
+                        <div class="mb-5">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">5</span>
+                                Política de Cambios (Rigurosa)
+                            </h4>
+                            <div class="ps-5">
+                                <div class="alert alert-light border-start border-danger border-3">
+                                    <p class="mb-0 text-secondary">
+                                        <strong>Importante:</strong> Por razones de higiene y calidad, <span class="text-danger">no realizamos devoluciones de dinero</span>.
+                                    </p>
+                                </div>
+                                <p class="text-secondary lh-lg mt-3">
+                                    Aceptamos cambios únicamente por:
+                                    <br>• Error en la talla.
+                                    <br>• Defecto de fábrica comprobable.
+                                    <br><br>
+                                    <em>El reclamo debe realizarse dentro de las 48 horas posteriores a la entrega. La prenda debe estar intacta, con etiquetas y empaque original.</em>
+                                </p>
+                            </div>
+                        </div>
 
+                        <div class="mb-0">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">6</span>
+                                Propiedad Intelectual
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Todo el contenido visual y textual de este sitio es propiedad exclusiva de Rosa's Shop. Su uso no autorizado está estrictamente prohibido.
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
+
+                <div class="text-center mt-5">
+                    <a href="./contacto.html" class="btn btn-outline-dark rounded-0 px-4 py-2">
+                        <i class="fas fa-question-circle me-2"></i> ¿Tienes preguntas? Escríbenos
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>
 
-<footer class="footer-premium-v2 text-white pt-5 pb-3 mt-auto position-relative">
-    <div class="footer-top-border"></div>
-
-    <div class="container position-relative z-1 pt-4">
-        <div class="row g-4 justify-content-between">
-            
-            <div class="col-lg-4 col-md-12 mb-4">
-                <a href="./index.html" class="text-decoration-none d-block mb-4">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/img/logo-shop-removebg.png" alt="Rosa's Shop" style="height: 60px; filter: brightness(0) invert(1);" class="me-3">
-                        <div>
-                            <h3 class="text-uppercase fw-bold text-white mb-0" style="font-family: 'Playfair Display', serif; letter-spacing: 2px;">Rosa's</h3>
-                            <span class="small text-white-50 text-uppercase d-block" style="letter-spacing: 4px; font-size: 0.65rem;">Shop</span>
-                        </div>
-                    </div>
-                </a>
-                <p class="text-secondary lh-lg pe-lg-5" style="font-size: 0.9rem;">
-                    Tu destino exclusivo para moda internacional en Santo Domingo Oeste. Cada prenda cuenta una historia, encuentra la tuya hoy.
-                </p>
-            </div>
-
-            <div class="col-lg-2 col-md-4 col-6 mb-4">
-                <h5 class="footer-heading mb-4">Explorar</h5>
-                <ul class="list-unstyled footer-list">
-                    <li><a href="./index.html" class="footer-link-modern">Inicio</a></li>
-                    <li><a href="./catalogo.html" class="footer-link-modern">Catálogo</a></li>
-                    <li><a href="./nosotros.html" class="footer-link-modern">Nosotros</a></li>
-                    <li><a href="./contacto.html" class="footer-link-modern">Contacto</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-6 mb-4">
-                <h5 class="footer-heading mb-4">Información Legal</h5>
-                <ul class="list-unstyled footer-list">
-                    <li><a href="./terms.html" target="_blank" class="footer-link-modern legal-link">Términos y Condiciones</a></li>
-                    <li><a href="./privacy.html" target="_blank" class="footer-link-modern legal-link">Política de Privacidad</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-4 mb-4">
-                <h5 class="footer-heading mb-4">Conectemos</h5>
-                <p class="text-white-50 small mb-3">Síguenos para ofertas exclusivas y novedades.</p>
+    <footer class="footer-premium-v2 text-white pt-5 pb-3 mt-auto position-relative">
+        <div class="footer-top-border"></div>
+    
+        <div class="container position-relative z-1 pt-4">
+            <div class="row g-4 justify-content-between">
                 
-                <div class="d-flex gap-3 mt-2">
-                    <a href="https://www.instagram.com/shop_rosa00" class="social-glass"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/18" class="social-glass"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <hr class="border-secondary opacity-10 my-5">
-
-        <div class="row align-items-center pb-2">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <p class="small text-secondary mb-0" style="font-size: 0.8rem;">
-                    © 2026 <strong>Rosa's Shop</strong>. Todos los derechos reservados.
-                </p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <div class="nova-badge-container d-inline-block">
-                    <span class="small text-secondary me-2">Diseñado con <i class="fas fa-heart text-danger animate-pulse mx-1"></i> por</span>
-                    <a href="https://novastudioweb.github.io/" target="_blank" class="nova-pill text-decoration-none">
-                        <span class="fw-bold text-white">Nova Studio Web</span>
-                        <img src="./assets/img/logo_nova.png" alt="Nova" class="ms-2 nova-icon" style="height: 20px; width: auto;">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <a href="./index.html" class="text-decoration-none d-block mb-4">
+                        <div class="d-flex align-items-center">
+                            <img src="./assets/img/logo-shop-removebg.png" alt="Rosa's Shop" style="height: 60px; filter: brightness(0) invert(1);" class="me-3">
+                            <div>
+                                <h3 class="text-uppercase fw-bold text-white mb-0" style="font-family: 'Playfair Display', serif; letter-spacing: 2px;">Rosa's</h3>
+                                <span class="small text-white-50 text-uppercase d-block" style="letter-spacing: 4px; font-size: 0.65rem;">Shop</span>
+                            </div>
+                        </div>
                     </a>
+                    <p class="text-secondary lh-lg pe-lg-5" style="font-size: 0.9rem;">
+                        Tu destino exclusivo para moda internacional en Santo Domingo Oeste. Cada prenda cuenta una historia, encuentra la tuya hoy.
+                    </p>
+                </div>
+    
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h5 class="footer-heading mb-4">Explorar</h5>
+                    <ul class="list-unstyled footer-list">
+                        <li><a href="./index.html" class="footer-link-modern">Inicio</a></li>
+                        <li><a href="./catalogo.html" class="footer-link-modern">Catálogo</a></li>
+                        <li><a href="./nosotros.html" class="footer-link-modern">Nosotros</a></li>
+                        <li><a href="./contacto.html" class="footer-link-modern">Contacto</a></li>
+                    </ul>
+                </div>
+    
+                <div class="col-lg-3 col-md-4 col-6 mb-4">
+                    <h5 class="footer-heading mb-4">Información Legal</h5>
+                    <ul class="list-unstyled footer-list">
+                        <li><a href="./terms.html" target="_blank" class="footer-link-modern legal-link">Términos y Condiciones</a></li>
+                        <li><a href="./privacy.html" target="_blank" class="footer-link-modern legal-link">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+    
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="footer-heading mb-4">Conectemos</h5>
+                    <p class="text-white-50 small mb-3">Síguenos para ofertas exclusivas y novedades.</p>
+                    
+                    <div class="d-flex gap-3 mt-2">
+                        <a href="https://www.instagram.com/shop_rosa00" class="social-glass"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/18099917494" class="social-glass"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <hr class="border-secondary opacity-10 my-5">
+    
+            <div class="row align-items-center pb-2">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="small text-secondary mb-0" style="font-size: 0.8rem;">
+                        © 2026 <strong>Rosa's Shop</strong>. Todos los derechos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="nova-badge-container d-inline-block">
+                        <span class="small text-secondary me-2">Diseñado con <i class="fas fa-heart text-danger animate-pulse mx-1"></i> por</span>
+                        <a href="https://novastudioweb.github.io/" target="_blank" class="nova-pill text-decoration-none">
+                            <span class="fw-bold text-white">Nova Studio Web</span>
+                            <img src="./assets/img/logo_nova.png" alt="Nova" class="ms-2 nova-icon" style="height: 20px; width: auto;">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito">
         <div class="offcanvas-header border-bottom">
@@ -163,6 +241,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>

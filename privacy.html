@@ -7,15 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/page.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/page.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm transition-navbar" style="background-color: rgba(255,255,255,0.95); backdrop-filter: blur(5px);">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="assets/img/logo-shop-removebg.png" alt="Logo Rosa's Shop" class="navbar-logo me-2 transition-logo" style="height: 40px;">
+            <a class="navbar-brand d-flex align-items-center" href="./index.html">
+                <img src="./assets/img/logo-shop-removebg.png" alt="Logo Rosa's Shop" class="navbar-logo me-2 transition-logo" style="height: 40px;">
                 <span class="d-none d-sm-inline">Rosa's <span class="fw-light">Shop</span></span>
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -23,10 +23,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="catalogo.html">Catálogo</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="nosotros.html">Nosotros</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="./index.html">Inicio</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="./catalogo.html">Catálogo</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="./nosotros.html">Nosotros</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link fw-semibold hover-link" href="./contacto.html">Contacto</a></li>
                 </ul>
             </div>
             <div class="cart-icon position-relative transition-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" style="cursor: pointer;">
@@ -36,114 +36,169 @@
         </div>
     </nav>
 
-    <header class="bg-white pt-5 pb-4 mt-5 border-bottom">
-        <div class="container mt-4">
-            <h1 class="display-5 fw-bold text-center" style="font-family: 'Playfair Display', serif;">Política de Privacidad</h1>
-            <p class="text-center text-muted">Tu confianza es nuestra prioridad.</p>
+    <header class="pt-5 pb-5 mt-5 border-bottom position-relative overflow-hidden" style="background: linear-gradient(to right, #f8f9fa, #fff, #f8f9fa);">
+        <div class="container mt-4 position-relative z-1">
+            <nav aria-label="breadcrumb" class="mb-3 animate-fade-in-up">
+                <ol class="breadcrumb justify-content-center small text-uppercase tracking-wide">
+                    <li class="breadcrumb-item"><a href="./index.html" class="text-decoration-none text-muted">Inicio</a></li>
+                    <li class="breadcrumb-item active text-dark fw-bold" aria-current="page">Privacidad</li>
+                </ol>
+            </nav>
+            <h1 class="display-5 fw-bold text-center animate-fade-in-up delay-1" style="font-family: 'Playfair Display', serif;">Política de Privacidad</h1>
+            <div class="divider-custom mx-auto mt-3" style="width: 50px; height: 3px; background-color: #e83e8c;"></div>
+            <p class="text-center text-muted mt-3 animate-fade-in-up delay-2">Tu confianza y seguridad son nuestra prioridad.</p>
         </div>
     </header>
 
-    <section class="container my-5 animate-fade-in-up">
+    <section class="container my-5 animate-fade-in-up delay-3">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="bg-white p-5 shadow-sm rounded-3">
-                    
-                    <h4 class="fw-bold mb-3">1. Información que Recopilamos</h4>
-                    <p class="text-secondary mb-4">Solo recopilamos la información necesaria para procesar y entregar tu pedido. Esto incluye: Nombre completo, número de teléfono (para coordinación por WhatsApp) y dirección de entrega.</p>
+                <div class="bg-white p-5 shadow rounded-3 border-top border-4 border-secondary position-relative">
+                    <i class="fas fa-file-contract position-absolute top-0 end-0 m-4 text-muted opacity-10 fa-4x"></i>
 
-                    <h4 class="fw-bold mb-3">2. Uso de la Información</h4>
-                    <p class="text-secondary mb-4">Utilizamos tus datos exclusivamente para:
-                        <br>• Gestionar y entregar tus pedidos.
-                        <br>• Comunicarnos contigo sobre el estado de tu compra.
-                        <br>• Mejorar nuestros servicios.
-                        <br><strong>Nunca venderemos tus datos a terceros.</strong>
-                    </p>
+                    <div class="legal-content">
+                        <div class="mb-5">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">1</span>
+                                Información que Recopilamos
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Solo recopilamos la información estrictamente necesaria para procesar y entregar tu pedido con excelencia. Esto incluye:
+                                <ul class="text-secondary ps-5 mt-2">
+                                    <li>Nombre completo para identificación.</li>
+                                    <li>Número de teléfono para coordinación ágil vía WhatsApp.</li>
+                                    <li>Dirección de entrega precisa.</li>
+                                </ul>
+                            </p>
+                        </div>
 
-                    <h4 class="fw-bold mb-3">3. Seguridad</h4>
-                    <p class="text-secondary mb-4">Tomamos medidas razonables para proteger tu información personal contra pérdida, robo y uso no autorizado. Sin embargo, ten en cuenta que ninguna transmisión por Internet es 100% segura.</p>
+                        <div class="mb-5">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">2</span>
+                                Uso de la Información
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Tus datos son sagrados para nosotros. Los utilizamos exclusivamente para:
+                                <br>• <strong>Gestionar</strong> la logística de tus pedidos.
+                                <br>• <strong>Comunicarnos</strong> contigo sobre el estado de tu compra.
+                                <br>• <strong>Mejorar</strong> continuamente nuestros servicios.
+                                <br><span class="text-danger fw-bold"><i class="fas fa-shield-alt me-1"></i> Importante:</span> Nunca venderemos ni compartiremos tus datos con terceros ajenos a la logística de entrega.
+                            </p>
+                        </div>
 
-                    <h4 class="fw-bold mb-3">4. Cookies</h4>
-                    <p class="text-secondary mb-4">Nuestro sitio web utiliza almacenamiento local (localStorage) para recordar los productos que añades al carrito de compras y mejorar tu experiencia de navegación. No utilizamos cookies de rastreo invasivas.</p>
+                        <div class="mb-5">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">3</span>
+                                Seguridad
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Tomamos medidas razonables y estándares de la industria para proteger tu información personal contra pérdida, robo y uso no autorizado. Aunque ninguna transmisión por Internet es 100% segura, nos esforzamos por proteger tu privacidad al máximo.
+                            </p>
+                        </div>
 
-                    <h4 class="fw-bold mb-3">5. Contacto</h4>
-                    <p class="text-secondary mb-0">Si tienes preguntas sobre cómo manejamos tus datos, puedes contactarnos a través de nuestro formulario de contacto o directamente por WhatsApp.</p>
+                        <div class="mb-5">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">4</span>
+                                Cookies y Datos Locales
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Nuestro sitio web utiliza tecnología de almacenamiento local (localStorage) únicamente para funciones esenciales, como recordar qué productos has añadido a tu carrito de compras mientras navegas. No utilizamos cookies de rastreo invasivas ni publicitarias.
+                            </p>
+                        </div>
+
+                        <div class="mb-0">
+                            <h4 class="fw-bold mb-3 d-flex align-items-center" style="font-family: 'Playfair Display', serif;">
+                                <span class="badge bg-light text-dark me-3 border rounded-circle p-2" style="width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">5</span>
+                                Contacto y Derechos
+                            </h4>
+                            <p class="text-secondary ps-5 lh-lg">
+                                Tienes derecho a solicitar la eliminación de tus datos de nuestros registros en cualquier momento una vez completado tu pedido. Si tienes preguntas, contáctanos a través de nuestro formulario o directamente por WhatsApp.
+                            </p>
+                        </div>
+                    </div>
 
                 </div>
+                
+                <div class="text-center mt-5">
+                    <a href="./contacto.html" class="btn btn-outline-dark rounded-0 px-4 py-2">
+                        <i class="fas fa-envelope me-2"></i> ¿Tienes dudas? Contáctanos
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>
 
-<footer class="footer-premium-v2 text-white pt-5 pb-3 mt-auto position-relative">
-    <div class="footer-top-border"></div>
-
-    <div class="container position-relative z-1 pt-4">
-        <div class="row g-4 justify-content-between">
-            
-            <div class="col-lg-4 col-md-12 mb-4">
-                <a href="./index.html" class="text-decoration-none d-block mb-4">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/img/logo-shop-removebg.png" alt="Rosa's Shop" style="height: 60px; filter: brightness(0) invert(1);" class="me-3">
-                        <div>
-                            <h3 class="text-uppercase fw-bold text-white mb-0" style="font-family: 'Playfair Display', serif; letter-spacing: 2px;">Rosa's</h3>
-                            <span class="small text-white-50 text-uppercase d-block" style="letter-spacing: 4px; font-size: 0.65rem;">Shop</span>
-                        </div>
-                    </div>
-                </a>
-                <p class="text-secondary lh-lg pe-lg-5" style="font-size: 0.9rem;">
-                    Tu destino exclusivo para moda internacional en Santo Domingo Oeste. Cada prenda cuenta una historia, encuentra la tuya hoy.
-                </p>
-            </div>
-
-            <div class="col-lg-2 col-md-4 col-6 mb-4">
-                <h5 class="footer-heading mb-4">Explorar</h5>
-                <ul class="list-unstyled footer-list">
-                    <li><a href="./index.html" class="footer-link-modern">Inicio</a></li>
-                    <li><a href="./catalogo.html" class="footer-link-modern">Catálogo</a></li>
-                    <li><a href="./nosotros.html" class="footer-link-modern">Nosotros</a></li>
-                    <li><a href="./contacto.html" class="footer-link-modern">Contacto</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-6 mb-4">
-                <h5 class="footer-heading mb-4">Información Legal</h5>
-                <ul class="list-unstyled footer-list">
-                    <li><a href="./terms.html" target="_blank" class="footer-link-modern legal-link">Términos y Condiciones</a></li>
-                    <li><a href="./privacy.html" target="_blank" class="footer-link-modern legal-link">Política de Privacidad</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-4 mb-4">
-                <h5 class="footer-heading mb-4">Conectemos</h5>
-                <p class="text-white-50 small mb-3">Síguenos para ofertas exclusivas y novedades.</p>
+    <footer class="footer-premium-v2 text-white pt-5 pb-3 mt-auto position-relative">
+        <div class="footer-top-border"></div>
+    
+        <div class="container position-relative z-1 pt-4">
+            <div class="row g-4 justify-content-between">
                 
-                <div class="d-flex gap-3 mt-2">
-                    <a href="https://www.instagram.com/shop_rosa00" class="social-glass"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/18" class="social-glass"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <hr class="border-secondary opacity-10 my-5">
-
-        <div class="row align-items-center pb-2">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <p class="small text-secondary mb-0" style="font-size: 0.8rem;">
-                    © 2026 <strong>Rosa's Shop</strong>. Todos los derechos reservados.
-                </p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <div class="nova-badge-container d-inline-block">
-                    <span class="small text-secondary me-2">Diseñado con <i class="fas fa-heart text-danger animate-pulse mx-1"></i> por</span>
-                    <a href="https://novastudioweb.github.io/" target="_blank" class="nova-pill text-decoration-none">
-                        <span class="fw-bold text-white">Nova Studio Web</span>
-                        <img src="./assets/img/logo_nova.png" alt="Nova" class="ms-2 nova-icon" style="height: 20px; width: auto;">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <a href="./index.html" class="text-decoration-none d-block mb-4">
+                        <div class="d-flex align-items-center">
+                            <img src="./assets/img/logo-shop-removebg.png" alt="Rosa's Shop" style="height: 60px; filter: brightness(0) invert(1);" class="me-3">
+                            <div>
+                                <h3 class="text-uppercase fw-bold text-white mb-0" style="font-family: 'Playfair Display', serif; letter-spacing: 2px;">Rosa's</h3>
+                                <span class="small text-white-50 text-uppercase d-block" style="letter-spacing: 4px; font-size: 0.65rem;">Shop</span>
+                            </div>
+                        </div>
                     </a>
+                    <p class="text-secondary lh-lg pe-lg-5" style="font-size: 0.9rem;">
+                        Tu destino exclusivo para moda internacional en Santo Domingo Oeste. Cada prenda cuenta una historia, encuentra la tuya hoy.
+                    </p>
+                </div>
+    
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h5 class="footer-heading mb-4">Explorar</h5>
+                    <ul class="list-unstyled footer-list">
+                        <li><a href="./index.html" class="footer-link-modern">Inicio</a></li>
+                        <li><a href="./catalogo.html" class="footer-link-modern">Catálogo</a></li>
+                        <li><a href="./nosotros.html" class="footer-link-modern">Nosotros</a></li>
+                        <li><a href="./contacto.html" class="footer-link-modern">Contacto</a></li>
+                    </ul>
+                </div>
+    
+                <div class="col-lg-3 col-md-4 col-6 mb-4">
+                    <h5 class="footer-heading mb-4">Información Legal</h5>
+                    <ul class="list-unstyled footer-list">
+                        <li><a href="./terms.html" target="_blank" class="footer-link-modern legal-link">Términos y Condiciones</a></li>
+                        <li><a href="./privacy.html" target="_blank" class="footer-link-modern legal-link">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+    
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="footer-heading mb-4">Conectemos</h5>
+                    <p class="text-white-50 small mb-3">Síguenos para ofertas exclusivas y novedades.</p>
+                    
+                    <div class="d-flex gap-3 mt-2">
+                        <a href="https://www.instagram.com/shop_rosa00" class="social-glass"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/18099917494" class="social-glass"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <hr class="border-secondary opacity-10 my-5">
+    
+            <div class="row align-items-center pb-2">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="small text-secondary mb-0" style="font-size: 0.8rem;">
+                        © 2026 <strong>Rosa's Shop</strong>. Todos los derechos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="nova-badge-container d-inline-block">
+                        <span class="small text-secondary me-2">Diseñado con <i class="fas fa-heart text-danger animate-pulse mx-1"></i> por</span>
+                        <a href="https://novastudioweb.github.io/" target="_blank" class="nova-pill text-decoration-none">
+                            <span class="fw-bold text-white">Nova Studio Web</span>
+                            <img src="./assets/img/logo_nova.png" alt="Nova" class="ms-2 nova-icon" style="height: 20px; width: auto;">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito">
         <div class="offcanvas-header border-bottom">
@@ -165,6 +220,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
