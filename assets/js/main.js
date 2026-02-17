@@ -257,7 +257,7 @@ function enviarPedidoWhatsApp() {
         return;
     }
 
-    const telefono = "18496214533"; 
+    const telefono = "18099917494"; 
     let mensaje = "¡Hola Rosa's Shop! 👋 Me gustaría realizar el siguiente pedido:%0A%0A";
     let total = 0;
 
