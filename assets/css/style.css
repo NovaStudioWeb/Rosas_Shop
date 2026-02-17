@@ -155,3 +155,34 @@ a {
     .nav-link:last-child { border-bottom: none; }
     .offcanvas-end { width: 85% !important; }
 }
+
+/* --- CARRUSEL DE CATEGORÍAS --- */
+
+/* Ocultar barra de scroll pero mantener funcionalidad */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Efecto hover en los botones de navegación */
+#scrollLeftBtn, #scrollRightBtn {
+    transition: all 0.3s ease;
+    background-color: #1a1a1a;
+    border: none;
+}
+
+#scrollLeftBtn:hover, #scrollRightBtn:hover {
+    transform: translateY(-50%) scale(1.1) !important; /* Mantiene el centrado vertical */
+    background-color: var(--rosa-accent);
+}
+
+/* Asegurar que las imágenes sean responsivas dentro del círculo */
+.category-img-container {
+    width: 160px; /* Tamaño fijo del círculo */
+    height: 160px;
+    background-color: #f8f9fa; /* Fondo gris claro por si la imagen tarda en cargar */
+}
