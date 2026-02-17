@@ -86,17 +86,24 @@
         </div>
     </section>
 
-    <section class="container py-5 mt-4" id="category">
-        <div class="text-center mb-5">
-            <h6 class="text-uppercase text-muted tracking-wide mb-2">Explora Nuestras Opciones</h6>
-            <h2 class="display-5 fw-bold" style="font-family: 'Playfair Display', serif;">Compra por Categoría</h2>
-            <div class="divider-custom mx-auto mt-3" style="width: 60px; height: 3px; background-color: var(--rosa-accent);"></div>
-        </div>
+ <section class="container py-5 mt-4" id="category">
+    <div class="text-center mb-5">
+        <h6 class="text-uppercase text-muted tracking-wide mb-2">Explora Nuestras Opciones</h6>
+        <h2 class="display-5 fw-bold" style="font-family: 'Playfair Display', serif;">Compra por Categoría</h2>
+        <div class="divider-custom mx-auto mt-3" style="width: 60px; height: 3px; background-color: var(--rosa-accent);"></div>
+    </div>
+    
+    <div class="position-relative px-4">
         
-        <div class="row text-center g-4 justify-content-center">
+        <button class="btn btn-dark rounded-circle position-absolute top-50 start-0 translate-middle-y z-2 shadow-lg d-none d-md-flex align-items-center justify-content-center" 
+                style="width: 45px; height: 45px; margin-left: -20px;" id="scrollLeftBtn">
+            <i class="fas fa-chevron-left text-white"></i>
+        </button>
+
+        <div class="d-flex overflow-auto gap-4 py-4 hide-scrollbar scroll-smooth" id="categoryScrollContainer" style="scroll-behavior: smooth;">
             
-            <div class="col-6 col-md-3 category-item reveal">
-                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'perfumes')" class="text-decoration-none text-dark d-block group">
+            <div class="category-card flex-shrink-0" style="width: 220px;">
+                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'perfume')" class="text-decoration-none text-dark d-block group text-center">
                     <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
                         <img src="./assets/img/categories/categoria_perfume.png" class="img-fluid category-img transition-img" alt="Perfumes">
                         <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
@@ -107,8 +114,8 @@
                 </a>
             </div>
 
-            <div class="col-6 col-md-3 category-item reveal">
-                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'jeans')" class="text-decoration-none text-dark d-block group">
+            <div class="category-card flex-shrink-0" style="width: 220px;">
+                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'jeans')" class="text-decoration-none text-dark d-block group text-center">
                     <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
                         <img src="./assets/img/categories/categoria_jeans.png" class="img-fluid category-img transition-img" alt="Jeans">
                         <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
@@ -119,8 +126,8 @@
                 </a>
             </div>
 
-            <div class="col-6 col-md-3 category-item reveal">
-                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 't-shirts')" class="text-decoration-none text-dark d-block group">
+            <div class="category-card flex-shrink-0" style="width: 220px;">
+                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'tshirt')" class="text-decoration-none text-dark d-block group text-center">
                     <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
                         <img src="./assets/img/categories/categoria_tshirts.png" class="img-fluid category-img transition-img" alt="T-Shirts">
                         <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
@@ -131,20 +138,87 @@
                 </a>
             </div>
 
-            <div class="col-6 col-md-3 category-item reveal">
-                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'zapatos')" class="text-decoration-none text-dark d-block group">
+            <div class="category-card flex-shrink-0" style="width: 220px;">
+                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'blusa')" class="text-decoration-none text-dark d-block group text-center">
                     <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
-                        <img src="./assets/img/categories/categoria_zapatos.png" class="img-fluid category-img transition-img" alt="Zapatos">
+                        <img src="./assets/img/categories/categoria_blusas.png" class="img-fluid category-img transition-img" alt="Blusas">
                         <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
                             <i class="fas fa-search text-white fa-2x"></i>
                         </div>
                     </div>
-                    <h5 class="fw-bold font-heading">Zapatos</h5>
+                    <h5 class="fw-bold font-heading">Blusas</h5>
+                </a>
+            </div>
+
+            <div class="category-card flex-shrink-0" style="width: 220px;">
+                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'dress')" class="text-decoration-none text-dark d-block group text-center">
+                    <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
+                        <img src="./assets/img/categories/categoria_vestidos.png" class="img-fluid category-img transition-img" alt="Vestidos">
+                        <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
+                            <i class="fas fa-search text-white fa-2x"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold font-heading">Vestidos</h5>
+                </a>
+            </div>
+
+            <div class="category-card flex-shrink-0" style="width: 220px;">
+                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'shorts')" class="text-decoration-none text-dark d-block group text-center">
+                    <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
+                        <img src="./assets/img/categories/categoria_shorts.png" class="img-fluid category-img transition-img" alt="Shorts">
+                        <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
+                            <i class="fas fa-search text-white fa-2x"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold font-heading">Shorts</h5>
+                </a>
+            </div>
+
+            <div class="category-card flex-shrink-0" style="width: 220px;">
+                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'sandals')" class="text-decoration-none text-dark d-block group text-center">
+                    <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
+                        <img src="./assets/img/categories/categoria_sandals.png" class="img-fluid category-img transition-img" alt="Sandalias">
+                        <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
+                            <i class="fas fa-search text-white fa-2x"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold font-heading">Sandalias</h5>
+                </a>
+            </div>
+
+             <div class="category-card flex-shrink-0" style="width: 220px;">
+                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'sport')" class="text-decoration-none text-dark d-block group text-center">
+                    <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
+                        <img src="./assets/img/categories/categoria_sport.png" class="img-fluid category-img transition-img" alt="Deportiva">
+                        <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
+                            <i class="fas fa-search text-white fa-2x"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold font-heading">Deportiva</h5>
+                </a>
+            </div>
+
+            <div class="category-card flex-shrink-0" style="width: 220px;">
+                <a href="./catalogo.html" onclick="localStorage.setItem('filtroPendiente', 'reloj')" class="text-decoration-none text-dark d-block group text-center">
+                    <div class="category-img-container rounded-circle mx-auto mb-3 shadow-sm overflow-hidden position-relative">
+                        <img src="./assets/img/categories/categoria_relojes.png" class="img-fluid category-img transition-img" alt="Relojes">
+                        <div class="category-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center transition-overlay">
+                            <i class="fas fa-search text-white fa-2x"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold font-heading">Relojes</h5>
                 </a>
             </div>
 
         </div>
-    </section>
+
+        <button class="btn btn-dark rounded-circle position-absolute top-50 end-0 translate-middle-y z-2 shadow-lg d-none d-md-flex align-items-center justify-content-center" 
+                style="width: 45px; height: 45px; margin-right: -20px;" id="scrollRightBtn">
+            <i class="fas fa-chevron-right text-white"></i>
+        </button>
+
+    </div>
+</section>
 
     <section class="container py-5 border-top animate-on-scroll">
         <div class="text-center mb-5">

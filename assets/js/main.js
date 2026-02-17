@@ -420,3 +420,23 @@ if (formularioContacto) {
     });
 }
 
+// --- LÓGICA DEL CARRUSEL DE CATEGORÍAS ---
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollContainer = document.getElementById('categoryScrollContainer');
+    const leftBtn = document.getElementById('scrollLeftBtn');
+    const rightBtn = document.getElementById('scrollRightBtn');
+
+    if (scrollContainer && leftBtn && rightBtn) {
+        
+        // Cantidad de desplazamiento (ancho de tarjeta + gap)
+        const scrollAmount = 240; 
+
+        leftBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        rightBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    }
+});

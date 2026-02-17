@@ -1,38 +1,38 @@
 [
     {
         "id": 1,
-        "nombre": "Skinny Jeans High Waist",
-        "categoria": "jeans",
+        "nombre": "Blusa Casual High Waist",
+        "categoria": "blusa",
         "precio": 1800,
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop",
+        "imagen": "./assets/img/products/blusa.png",
         "destacado": true
     },
     {
         "id": 2,
-        "nombre": "Blusa Seda Importada",
-        "categoria": "t-shirts",
+        "nombre": "Vestido de Seda Importado",
+        "categoria": "dress",
         "precio": 1200,
         "tallas": ["S", "M", "L"],
-        "imagen": "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?q=80&w=600&auto=format&fit=crop",
+        "imagen": "./assets/img/products/dress.png",
         "destacado": true
     },
     {
         "id": 3,
-        "nombre": "Tenis Urban Chic",
-        "categoria": "zapatos",
+        "nombre": "Vestido Urban Chic",
+        "categoria": "dress",
         "precio": 2500,
-        "tallas": ["36", "37", "38", "39", "40"],
-        "imagen": "https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=600&auto=format&fit=crop",
+        "tallas": ["S", "M", "L"],
+        "imagen": "./assets/img/products/dress2.png",
         "destacado": true
     },
     {
         "id": 4,
-        "nombre": "Perfume 'Essence'",
-        "categoria": "perfumes",
+        "nombre": "Jeans 'Essence' Clásico",
+        "categoria": "jeans",
         "precio": 3200,
-        "tallas": ["3.4 oz", "1.7 oz"],
-        "imagen": "https://images.unsplash.com/photo-1594035910387-fea477942698?q=80&w=600&auto=format&fit=crop",
+        "tallas": ["28", "30", "32", "34"],
+        "imagen": "./assets/img/products/jeans.png",
         "destacado": true
     },
     {
@@ -41,34 +41,106 @@
         "categoria": "jeans",
         "precio": 2100,
         "tallas": ["28", "30", "32", "34"],
-        "imagen": "https://images.unsplash.com/photo-1542272617-08f086302542?q=80&w=600&auto=format&fit=crop",
+        "imagen": "./assets/img/products/jeans2.png",
         "destacado": false
     },
     {
         "id": 6,
-        "nombre": "T-Shirt Básica Blanca",
-        "categoria": "t-shirts",
+        "nombre": "Jeans Básicos Claros",
+        "categoria": "jeans",
         "precio": 800,
-        "tallas": ["S", "M", "L", "XL"],
-        "imagen": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop",
+        "tallas": ["28", "30", "32", "34"],
+        "imagen": "./assets/img/products/jeans3.png",
         "destacado": false
     },
     {
         "id": 7,
-        "nombre": "Tacones Stiletto Negros",
-        "categoria": "zapatos",
+        "nombre": "Perfume Black Stiletto",
+        "categoria": "perfume",
         "precio": 2800,
-        "tallas": ["35", "36", "37", "38"],
-        "imagen": "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=600&auto=format&fit=crop",
+        "tallas": ["50ml", "100ml"],
+        "imagen": "./assets/img/products/perfume.png",
         "destacado": false
     },
     {
         "id": 8,
         "nombre": "Perfume Floral Mist",
-        "categoria": "perfumes",
+        "categoria": "perfume",
         "precio": 1500,
         "tallas": ["100ml"],
-        "imagen": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=600&auto=format&fit=crop",
+        "imagen": "./assets/img/products/perfume2.png",
+        "destacado": false
+    },
+    {
+        "id": 9,
+        "nombre": "Perfume High Notes",
+        "categoria": "perfume",
+        "precio": 1800,
+        "tallas": ["50ml", "100ml"],
+        "imagen": "./assets/img/products/perfume3.png",
+        "destacado": true
+    },
+    {
+        "id": 10,
+        "nombre": "Reloj de Lujo Importado",
+        "categoria": "reloj",
+        "precio": 1200,
+        "tallas": ["Única"],
+        "imagen": "./assets/img/products/reloj.png",
+        "destacado": true
+    },
+    {
+        "id": 11,
+        "nombre": "Sandalias Urban Chic",
+        "categoria": "sandals",
+        "precio": 2500,
+        "tallas": ["36", "37", "38", "39", "40"],
+        "imagen": "./assets/img/products/sandals.png",
+        "destacado": true
+    },
+    {
+        "id": 12,
+        "nombre": "Shorts Denim 'Essence'",
+        "categoria": "shorts",
+        "precio": 3200,
+        "tallas": ["S", "M", "L"],
+        "imagen": "./assets/img/products/shorts.png",
+        "destacado": true
+    },
+    {
+        "id": 13,
+        "nombre": "Shorts Jeans Vintage",
+        "categoria": "shorts",
+        "precio": 2100,
+        "tallas": ["S", "M", "L"],
+        "imagen": "./assets/img/products/shorts2.png",
+        "destacado": false
+    },
+    {
+        "id": 14,
+        "nombre": "Shorts Básico Blanco",
+        "categoria": "shorts",
+        "precio": 800,
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "./assets/img/products/shorts3.png",
+        "destacado": false
+    },
+    {
+        "id": 15,
+        "nombre": "Conjunto Deportivo Stiletto",
+        "categoria": "sport",
+        "precio": 2800,
+        "tallas": ["S", "M", "L"],
+        "imagen": "./assets/img/products/sport.png",
+        "destacado": false
+    },
+    {
+        "id": 16,
+        "nombre": "T-Shirt Floral Print",
+        "categoria": "tshirt",
+        "precio": 1500,
+        "tallas": ["S", "M", "L"],
+        "imagen": "./assets/img/products/tshirt.png",
         "destacado": false
     }
 ]
