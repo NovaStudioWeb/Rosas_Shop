@@ -264,16 +264,22 @@ function enviarPedidoWhatsApp() {
     carrito.forEach(prod => {
         const subtotal = prod.precio * prod.cantidad;
         total += subtotal;
-        // Se añade la información de tallas si existe en el JSON
-        const tallasDisponibles = prod.tallas ? ` (Tallas: ${prod.tallas.join(', ')})` : '';
-        mensaje += `• *${prod.cantidad}x* ${prod.nombre}${tallasDisponibles} - RD$ ${subtotal.toLocaleString()}%0A`;
+        
+        // Tomamos la talla exacta que el cliente seleccionó al añadir al carrito
+        const tallaElegida = prod.talla ? `Talla: ${prod.talla}` : 'Talla única';
+        
+        // Tomamos la sucursal donde está el producto
+        const sucursal = prod.sucursal ? `Disp: ${prod.sucursal}` : 'Consultar disp.';
+        
+        // Armamos el mensaje con la cantidad, nombre, precio, y debajo la talla y sucursal
+        mensaje += `• *${prod.cantidad}x* ${prod.nombre} - RD$ ${subtotal.toLocaleString()}%0A`;
+        mensaje += `  └ _${tallaElegida} | ${sucursal}_%0A`;
     });
 
     mensaje += `%0A━━━━━━━━━━━━━━━%0A*TOTAL: RD$ ${total.toLocaleString()}*%0A━━━━━━━━━━━━━━━%0A%0A_Por favor, confírmenme disponibilidad para coordinar el pago y envío._`;
 
     window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
 }
-
 /* =========================================
    4. RENDERIZADO DE COMPONENTES HTML
    ========================================= */
@@ -299,8 +305,12 @@ function crearTarjetaProducto(producto) {
                         <h5 class="card-title h6 fw-bold mb-2">${producto.nombre}</h5>
                         <p class="product-price text-dark mb-1">RD$ ${producto.precio.toLocaleString()}</p>
                         
+                        <p class="small text-muted mb-1" style="font-size: 0.85rem;">
+                            Talla: <span class="fw-semibold text-dark">${producto.tallas}</span>
+                        </p>
+                        
                         <p class="small text-muted mb-3" style="font-size: 0.85rem;">
-                            Talla: <span class="fw-semibold text-dark">${producto.tallas.join(', ')}</span>
+                            <i class="fas fa-map-marker-alt text-secondary me-1"></i> Disp: <span class="fw-semibold text-dark">${producto.sucursal || 'No especificada'}</span>
                         </p>
                     </div>
                     <button class="btn btn-outline-dark w-100 rounded-0 py-2" onclick="agregarAlCarrito(${producto.id})">
@@ -328,14 +338,19 @@ function iniciarSistemaFiltros() {
     const searchInput = document.getElementById('searchInput'); 
     const rangePrecio = document.getElementById('priceRange');
     const labelPrecio = document.getElementById('priceLabel');
-    const checks = document.querySelectorAll('.filter-check');
+    const checks = document.querySelectorAll('.filter-check'); // Checkboxes de Categorías
+    const branchChecks = document.querySelectorAll('.branch-check'); // Checkboxes de Sucursales
     const contador = document.getElementById('contadorProductos');
     const sortSelect = document.getElementById('sortSelect'); 
     const btnReset = document.getElementById('btnReset'); 
 
     function filtrarYPintar() {
         const textoBusqueda = searchInput ? searchInput.value.toLowerCase().trim() : '';
-        const categoriasActivas = Array.from(checks).filter(chk => chk.checked).map(chk => chk.value);
+        
+        // Convertimos a minúsculas y quitamos espacios para evitar errores de tipeo
+        const categoriasActivas = Array.from(checks).filter(chk => chk.checked).map(chk => chk.value.toLowerCase().trim());
+        const sucursalesActivas = Array.from(branchChecks).filter(chk => chk.checked).map(chk => chk.value.toLowerCase().trim());
+        
         const precioMax = rangePrecio ? parseInt(rangePrecio.value) : 10000;
 
         if(labelPrecio) labelPrecio.innerText = `RD$ ${precioMax.toLocaleString()}`;
@@ -343,9 +358,18 @@ function iniciarSistemaFiltros() {
         // Lógica de filtrado
         let resultados = database.filter(producto => {
             const pasaBusqueda = producto.nombre.toLowerCase().includes(textoBusqueda);
-            const pasaCategoria = categoriasActivas.length === 0 || categoriasActivas.includes(producto.categoria);
+            
+            // Verificamos categoría estandarizada
+            const catProd = producto.categoria ? producto.categoria.toLowerCase().trim() : '';
+            const pasaCategoria = categoriasActivas.length === 0 || categoriasActivas.includes(catProd);
+            
             const pasaPrecio = producto.precio <= precioMax;
-            return pasaBusqueda && pasaCategoria && pasaPrecio;
+
+            // Verificamos sucursal estandarizada
+            const sucProd = producto.sucursal ? producto.sucursal.toLowerCase().trim() : '';
+            const pasaSucursal = sucursalesActivas.length === 0 || sucursalesActivas.includes(sucProd);
+            
+            return pasaBusqueda && pasaCategoria && pasaPrecio && pasaSucursal;
         });
 
         // Lógica de ordenamiento
@@ -377,12 +401,16 @@ function iniciarSistemaFiltros() {
     // Escuchadores de eventos
     if(searchInput) searchInput.addEventListener('input', filtrarYPintar);
     if(rangePrecio) rangePrecio.addEventListener('input', filtrarYPintar);
+    
     checks.forEach(chk => chk.addEventListener('change', filtrarYPintar));
+    branchChecks.forEach(chk => chk.addEventListener('change', filtrarYPintar)); // Escuchador de Sucursales
+    
     if(sortSelect) sortSelect.addEventListener('change', filtrarYPintar);
     
     if(btnReset) btnReset.addEventListener('click', () => {
         if(searchInput) searchInput.value = '';
         checks.forEach(chk => chk.checked = false);
+        branchChecks.forEach(chk => chk.checked = false); // Limpiar Sucursales
         if(rangePrecio) rangePrecio.value = 10000;
         if(sortSelect) sortSelect.value = 'defecto';
         filtrarYPintar(); 
@@ -391,7 +419,6 @@ function iniciarSistemaFiltros() {
     // Ejecución inicial
     filtrarYPintar();
 }
-
 /* =========================================
    6. SEGURIDAD Y PREVENCIÓN
    ========================================= */
