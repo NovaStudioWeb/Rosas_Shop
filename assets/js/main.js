@@ -287,12 +287,21 @@ function crearTarjetaProducto(producto) {
             <div class="card product-card h-100 border-0 shadow-sm overflow-hidden">
                 <div class="position-relative overflow-hidden" style="height: 320px;">
                     ${producto.destacado ? '<span class="badge bg-dark position-absolute top-0 start-0 m-3 z-3 rounded-0" style="letter-spacing:1px">DESTACADO</span>' : ''}
+                    
+                    <span class="badge bg-white text-dark border position-absolute top-0 end-0 m-3 z-3 rounded-0 text-uppercase shadow-sm" style="letter-spacing:1px; font-size: 0.65rem;">
+                        ${producto.categoria}
+                    </span>
+
                     <img src="${producto.imagen}" class="card-img-top h-100 w-100" style="object-fit: cover;" alt="${producto.nombre}">
                 </div>
                 <div class="card-body product-meta d-flex flex-column justify-content-between">
                     <div>
                         <h5 class="card-title h6 fw-bold mb-2">${producto.nombre}</h5>
-                        <p class="product-price text-dark mb-3">RD$ ${producto.precio.toLocaleString()}</p>
+                        <p class="product-price text-dark mb-1">RD$ ${producto.precio.toLocaleString()}</p>
+                        
+                        <p class="small text-muted mb-3" style="font-size: 0.85rem;">
+                            Talla: <span class="fw-semibold text-dark">${producto.tallas.join(', ')}</span>
+                        </p>
                     </div>
                     <button class="btn btn-outline-dark w-100 rounded-0 py-2" onclick="agregarAlCarrito(${producto.id})">
                         Añadir al Carrito

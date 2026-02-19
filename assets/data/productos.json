@@ -2,70 +2,70 @@
     {
         "id": 1,
         "nombre": "Blusa Casual High Waist",
-        "categoria": "blusa",
+        "categoria": "Blusas",
         "precio": 1800,
-        "tallas": ["S", "M", "L", "XL"],
+        "tallas": ["S"],
         "imagen": "./assets/img/products/blusa.png",
         "destacado": true
     },
     {
         "id": 2,
         "nombre": "Vestido de Seda Importado",
-        "categoria": "dress",
+        "categoria": "Vestidos",
         "precio": 1200,
-        "tallas": ["S", "M", "L"],
+        "tallas": ["M"],
         "imagen": "./assets/img/products/dress.png",
         "destacado": true
     },
     {
         "id": 3,
         "nombre": "Vestido Urban Chic",
-        "categoria": "dress",
+        "categoria": "Vestidos",
         "precio": 2500,
-        "tallas": ["S", "M", "L"],
+        "tallas": ["L"],
         "imagen": "./assets/img/products/dress2.png",
         "destacado": true
     },
     {
         "id": 4,
         "nombre": "Jeans 'Essence' Clásico",
-        "categoria": "jeans",
+        "categoria": "Jeans",
         "precio": 3200,
-        "tallas": ["28", "30", "32", "34"],
+        "tallas": ["34"],
         "imagen": "./assets/img/products/jeans.png",
         "destacado": true
     },
     {
         "id": 5,
         "nombre": "Mom Jeans Vintage",
-        "categoria": "jeans",
+        "categoria": "Jeans",
         "precio": 2100,
-        "tallas": ["28", "30", "32", "34"],
+        "tallas": ["32"],
         "imagen": "./assets/img/products/jeans2.png",
         "destacado": false
     },
     {
         "id": 6,
         "nombre": "Jeans Básicos Claros",
-        "categoria": "jeans",
+        "categoria": "Jeans",
         "precio": 800,
-        "tallas": ["28", "30", "32", "34"],
+        "tallas": ["28"],
         "imagen": "./assets/img/products/jeans3.png",
         "destacado": false
     },
     {
         "id": 7,
         "nombre": "Perfume Black Stiletto",
-        "categoria": "perfume",
+        "categoria": "Perfumes",
         "precio": 2800,
-        "tallas": ["50ml", "100ml"],
+        "tallas": ["50ml"],
         "imagen": "./assets/img/products/perfume.png",
         "destacado": false
     },
     {
         "id": 8,
         "nombre": "Perfume Floral Mist",
-        "categoria": "perfume",
+        "categoria": "Perfumes",
         "precio": 1500,
         "tallas": ["100ml"],
         "imagen": "./assets/img/products/perfume2.png",
@@ -74,16 +74,16 @@
     {
         "id": 9,
         "nombre": "Perfume High Notes",
-        "categoria": "perfume",
+        "categoria": "Perfumes",
         "precio": 1800,
-        "tallas": ["50ml", "100ml"],
+        "tallas": ["75ml"],
         "imagen": "./assets/img/products/perfume3.png",
         "destacado": true
     },
     {
         "id": 10,
         "nombre": "Reloj de Lujo Importado",
-        "categoria": "reloj",
+        "categoria": "Relojes",
         "precio": 1200,
         "tallas": ["Única"],
         "imagen": "./assets/img/products/reloj.png",
@@ -92,54 +92,54 @@
     {
         "id": 11,
         "nombre": "Sandalias Urban Chic",
-        "categoria": "sandals",
+        "categoria": "Sandalias",
         "precio": 2500,
-        "tallas": ["36", "37", "38", "39", "40"],
+        "tallas": ["40"],
         "imagen": "./assets/img/products/sandals.png",
         "destacado": true
     },
     {
         "id": 12,
         "nombre": "Shorts Denim 'Essence'",
-        "categoria": "shorts",
+        "categoria": "Shorts",
         "precio": 3200,
-        "tallas": ["S", "M", "L"],
+        "tallas": ["M"],
         "imagen": "./assets/img/products/shorts.png",
         "destacado": true
     },
     {
         "id": 13,
         "nombre": "Shorts Jeans Vintage",
-        "categoria": "shorts",
+        "categoria": "Shorts",
         "precio": 2100,
-        "tallas": ["S", "M", "L"],
+        "tallas": ["M"],
         "imagen": "./assets/img/products/shorts2.png",
         "destacado": false
     },
     {
         "id": 14,
         "nombre": "Shorts Básico Blanco",
-        "categoria": "shorts",
+        "categoria": "Shorts",
         "precio": 800,
-        "tallas": ["S", "M", "L", "XL"],
+        "tallas": ["M", "XL"],
         "imagen": "./assets/img/products/shorts3.png",
         "destacado": false
     },
     {
         "id": 15,
         "nombre": "Conjunto Deportivo Stiletto",
-        "categoria": "sport",
+        "categoria": "Ropa Deportiva",
         "precio": 2800,
-        "tallas": ["S", "M", "L"],
+        "tallas": ["M"],
         "imagen": "./assets/img/products/sport.png",
         "destacado": false
     },
     {
         "id": 16,
         "nombre": "T-Shirt Floral Print",
-        "categoria": "tshirt",
+        "categoria": "T-Shirt",
         "precio": 1500,
-        "tallas": ["S", "M", "L"],
+        "tallas": ["M"],
         "imagen": "./assets/img/products/tshirt.png",
         "destacado": false
     }
